@@ -3,16 +3,14 @@ from flask import Flask
 from flask import request
 import requests
 from flask import render_template
-from flask_restful import Api
 from news import news_blueprint
 from news import KAKAO_BASE_URL
 from news import Kakao_Key
 
 application = Flask(__name__)
 application.register_blueprint(news_blueprint, url_prefix='/news')
-api = Api(application)
 
-prev_pos = ['25', '100']
+prev_pos = ['', '']
 
 
 @application.route('/map', methods=['POST', 'GET'])
@@ -24,7 +22,7 @@ def map():
         if not request.form['address']:
 
             return render_template(
-                'map.html', pos_y=prev_pos[0], pos_x=prev_pos[1], flag=True
+                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], flag=True
             )
 
         address = request.form['address']
@@ -53,7 +51,7 @@ def map():
                 prev_pos[1] = pos_y
 
             return render_template(
-                'map.html', pos_y=pos_x, pos_x=pos_y
+                'map_template.html', pos_y=pos_x, pos_x=pos_y
             )
         except:
             print('주소입력데이터오류')
@@ -61,7 +59,7 @@ def map():
 
 @application.route('/')
 def main():
-    return render_template('main.html')
+    return render_template('main_template.html')
 
 
 if __name__ == "__main__":
