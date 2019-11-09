@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cover_template_style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="wrap">
+            <h1 class="cover_title">오늘의 반려동물</h1>
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../static/images/cover_img1.jpg" alt="Los Angeles" width="500" height="400">
+                    <div class="carousel-caption">
+                        <h3>Smile</h3>
+                        <p>Your smile makes me smile</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../static/images/cover_img2.jpg" alt="Chicago" width="500" height="400">
+                    <div class="carousel-caption">
+                        <h3>Chality</h3>
+                        <p>Chality gives birth another one</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../static/images/cover_img3.jpg" alt="New York" width="500" height="400">
+                    <div class="carousel-caption">
+                        <h3>Organic Dog</h3>
+                        <p>We wait for someone who care us</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

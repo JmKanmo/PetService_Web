@@ -13,6 +13,8 @@ application.register_blueprint(news_blueprint, url_prefix='/news')
 prev_pos = ['', '']
 
 
+# 지도검색시스템 동작관리 영역
+
 @application.route('/map', methods=['POST', 'GET'])
 def map():
     address = "충북 음성군 대소면"  # 초기주소
@@ -22,7 +24,7 @@ def map():
         if not request.form['address']:
 
             return render_template(
-                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], flag=True
+                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu = "map"
             )
 
         address = request.form['address']
@@ -51,7 +53,7 @@ def map():
                 prev_pos[1] = pos_y
 
             return render_template(
-                'map_template.html', pos_y=pos_x, pos_x=pos_y
+                'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu = "map"
             )
         except:
             print('주소입력데이터오류')

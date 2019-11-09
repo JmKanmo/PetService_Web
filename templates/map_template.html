@@ -1,3 +1,7 @@
+{% extends 'main_template.html' %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -18,9 +22,9 @@
 <body>
     <!-- 마크업디자인 영역 -->
     <div class="box">
-        <div class="moveTo">
+        <div class="moveTo clear_fix">
             <form action="http://127.0.0.1:5000/map" method="POST">
-                <input class="address_input" type="text" name="address" placeholder=" 검색하고싶은 주소를 입력해주세요.">
+                <input class="address_input" type="text" name="address" placeholder=" 입력한 주소와 가까운 위치의 시설을 표시합니다.">
                 <input class="address_button" type="submit" value="검색" title="입력주소에 속한 반려동물업체를 검색합니다.">
             </form>
         </div>
@@ -51,8 +55,8 @@
 
     <!-- 임시버튼(마커 다중생성,삭제) -->
     <div class="marker_div">
-        <button onclick="marker_make()" class="marker_create">마커생성</button>
-        <button onclick="marker_delete()" class="marker marker_delete">마커삭제</button>
+        <button onclick="marker_make()" class="marker_create blind">마커생성</button>
+        <button onclick="marker_delete()" class="marker marker_delete blind">마커삭제</button>
     </div>
 
     <!-- 지도 스크립트 영역 -->
@@ -65,3 +69,4 @@
 </body>
 
 </html>
+{% endblock %}

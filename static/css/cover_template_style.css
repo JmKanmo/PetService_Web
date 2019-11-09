@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 750px;
+    height: 450px;
+}
+
+a {
+    color: #9c27b0;
+}
+
+.wrap{
+    text-align: center;
+}
+
+.wrap .cover_title{
+    font-weight: bold;
+    font-size: 30px;
+    color: #837676;
+    padding-bottom: 20px;
+}
+
+.carousel.slide{
+    position: relative;
+    width: 750px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.carousel.slide::after{
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    top: 19px;
+    bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+

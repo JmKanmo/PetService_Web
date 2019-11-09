@@ -6,22 +6,32 @@
     clear: both;
 }
 
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+}
+
 .box {
     position: relative;
-    box-sizing: border-box;
     width: 1000px;
-    height: 600px;
-    margin: 0 auto;
-    padding-top: 70px;
+    height: 500px;
+    margin: 30px auto;
 }
 
 .moveTo {
-    padding-bottom: 5px;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
 }
 
 .moveTo .address_input {
+    float: left;
     width: 83%;
-    height: 30px;
+    height: 35px;
     font-size: 16px;
 }
 
@@ -30,11 +40,11 @@
 }
 
 .moveTo .address_button {
+    float: left;
     cursor: pointer;
-    width: 16%;
-    height: 37px;
+    width: 17%;
+    height: 36px;
     position: relative;
-    top: 1px;
     border: 1px solid #08a600;
     background-color: #4ec53d;
     font-size: 12px;
@@ -42,9 +52,11 @@
 }
 
 .map_wrap {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     border: 1px solid slategray;
 }
 
@@ -292,8 +304,8 @@
     position: absolute;
     width: 500px;
     height: 500px;
-    top: 0px;
-    left: 5px;
+    top: 100px;
+    left: 10px;
     overflow: hidden;
     background: url(http://t1.daumcdn.net/mapjsapi/images/2x/bg_tile.png);
     z-index: 10;
