@@ -4,44 +4,40 @@ from urllib.parse import urlencode, quote_plus, unquote
 import xmltodict
 import json
 
-API_KEY = "ZbgMgKa7yiF%2BH655L2q2bhPmTslw6qWOLQEB2plfkrRtwZPSn4y7V0P%2FXEkSS85j32cYyuDvan4LQSeo0cMuZQ%3D%3D"
-url = 'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?bgnde=20140301&endde=20140430&pageNo=1&numOfRows=10'
-queryParams = '&ServiceKey='+API_KEY\
-    # + '&bgnde='+'20140601'\
-# + '&endde='+'20140630'\
-# + '&upkind='+'417000'\
-# + '&kind=' + ''\
-# + '&upr_cd='+''\
-# + '&org_cd='+''\
-# + '&care_reg_no='+''\
-# + '&state=' + 'notice'\
-# + '&pageNo='+'1'\
-# + '&numOfRows='+'10'\
-# + '&neuter_yn='+'Y'\
+ANIMAL_API_KEY = "ZbgMgKa7yiF%2BH655L2q2bhPmTslw6qWOLQEB2plfkrRtwZPSn4y7V0P%2FXEkSS85j32cYyuDvan4LQSeo0cMuZQ%3D%3D"
+ANIMAL_URL = 'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?'
 
-url = url + queryParams
-result = requests.get(url)
-dict_type = xmltodict.parse(result.content)
-json_type = json.dumps(dict_type)
-dict2_type = json.loads(json_type)
+bgnde = '20190101'  # 유기날짜(검색시작일)
+endde = '20191109'  # 유기날짜(검색종료일)
+upkind = '417000'  # 축종코드(기본 - 개 , 고양이 - 422400 , 기타 - 429900)
+kind = ''  # 품종코드 - 품종코드API 참조
+upr_cd = ''  # 시도조회 API 참조
+org_cd = ''  # 시군구조회 API 참조
+care_reg_no = ''  # 보호소번호 API 참조
+state = 'protect'  # 기본값 protect
+neuter_yn = 'Y'  # 중성화여부 (Y , N , U)
+pageNo = '1'  # 페이지번호
+numOfRows = '12'  # 페이지당 보여줄 개수
 
-body = dict2_type['response']['body']
+option = 'bgnde='+bgnde\
+    + '&endde='+endde\
+    + '&pageNo='+pageNo\
+    + '&numOfRows='+numOfRows\
+    + '&upkind='+upkind\
+    + '&neuter_yn='+neuter_yn\
+    + '&state='+state\
 
-items = body['items']
+queryParams = option + '&ServiceKey='+ANIMAL_API_KEY\
 
-print(items['item'][0])
+try:
+    URL = ANIMAL_URL + queryParams
+    result = requests.get(URL)
+    dict_type = xmltodict.parse(result.content)
+    json_type = json.dumps(dict_type)
+    dict2_type = json.loads(json_type)
+    body = dict2_type['response']['body']
+    items = body['items']
+    animal_list = items['item']
 
-for item in items['item']:
-    print(item)
-
-    
-
-
-
-
-
-
-
-
-
-
+except:
+    animal_list = None

@@ -72,7 +72,7 @@
 .myfooter .github_name {
     position: relative;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     padding-left: 32px;
 }
 
@@ -92,7 +92,7 @@
     position: relative;
     font-weight: bold;
     color: lightgreen;
-    font-size: 18px;
+    font-size: 14px;
     padding-left: 35px;
 }
 
