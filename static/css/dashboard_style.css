@@ -30,6 +30,7 @@ ol {
 
 .animal_list .animal_profile {
     display: block;
+    cursor: pointer;
     padding: 15px 0 25px 15px;
     border: 1px solid #e4e4e4;
     color: #000;
@@ -56,17 +57,17 @@ ol {
     padding-bottom: 3px;
     margin-top: 11px;
     padding-bottom: 1px;
-    border-bottom: 1px solid rgba(181,181,181,0.3);
+    border-bottom: 1px solid rgba(181, 181, 181, 0.3);
 }
 
-.profile_info .info_text{
+.profile_info .info_text {
     font-style: normal;
     font-size: 11px;
     color: #555;
 }
 
-.profile_info .specialMark{
-    max-height: 60px; 
+.profile_info .specialMark {
+    max-height: 60px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

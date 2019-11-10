@@ -24,7 +24,7 @@ def map():
         if not request.form['address']:
 
             return render_template(
-                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu = "map"
+                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu="map"
             )
 
         address = request.form['address']
@@ -53,10 +53,17 @@ def map():
                 prev_pos[1] = pos_y
 
             return render_template(
-                'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu = "map"
+                'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map"
             )
         except:
             print('주소입력데이터오류')
+
+
+@application.route('/animal_info')
+def animal_info():
+    return render_template(
+        'animal_info.html'
+    )
 
 
 @application.route('/')

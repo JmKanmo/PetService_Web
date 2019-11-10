@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animal_info_style.css') }}">
+    <link rel="shortcut icon" href="#" />
+    <title>Document</title>
+    <script>
+        var animal_info = opener.parent.myfunc(); // 화면에 표시할 동물의 상세정보
+    </script>
+</head>
+
+<body>
+
+    <script src="{{ url_for('static', filename='js/animal_info_script.js') }}"></script>
+</body>
+
+</html>
