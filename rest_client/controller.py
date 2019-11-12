@@ -1,0 +1,73 @@
+from flask import Blueprint
+from flask import render_template
+import requests
+from flask import request
+from rest_server.resource_Map import KakaoMap_Resource
+from rest_client.blue_print import BluePrint
+from rest_server.resource_Animal import Animal_Resource
+import random
+
+
+# 지도검색시스템 동작관리 영역
+prev_pos = ['', '']
+
+
+@BluePrint.route('/maps', methods=['POST', 'GET'])
+def map():
+    address = "충북 음성군 대소면"  # 초기주소
+    flag = False
+
+    if request.method == 'POST':
+        if not request.form['address']:
+
+            return render_template(
+                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu="map"
+            )
+
+        address = request.form['address']
+
+    flag = True
+    document = KakaoMap_Resource().get(address)
+
+    if not document:
+        pos_x = prev_pos[0]
+        pos_y = prev_pos[1]
+    else:
+        address_info = dict(document[0])
+        pos_x = address_info["address"]['x']
+        pos_y = address_info["address"]['y']
+        prev_pos[0] = pos_x
+        prev_pos[1] = pos_y
+
+    return render_template(
+        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map"
+    )
+
+
+# 유기동물정보조회 코드영역
+
+animal_list = Animal_Resource().get('', '', '', '', '')
+
+
+@BluePrint.route('/dashboard')
+def dashboard():
+    list_param = []
+    random.shuffle(animal_list)
+    if animal_list != None:
+        if len(animal_list) < 15:
+            for item in animal_list:
+                list_param.append(item)
+        else:
+            for cnt in range(0, 15):
+                list_param.append(animal_list[cnt])
+
+    return render_template(
+        'dashboard.html', nav_menu="dashboard", animal_list=list_param
+    )
+
+
+@BluePrint.route('/animal_info')
+def animal_info():
+    return render_template(
+        'animal_info.html'
+    )

@@ -1,19 +1,10 @@
-
 from flask import Flask
-from flask import request
-import requests
 from flask import render_template
-from news import news_blueprint
+from rest_client.controller import BluePrint
+
 
 application = Flask(__name__)
-application.register_blueprint(news_blueprint, url_prefix='/news')
-
-
-@application.route('/animal_info')
-def animal_info():
-    return render_template(
-        'animal_info.html'
-    )
+application.register_blueprint(BluePrint, url_prefix='/bp')
 
 
 @application.route('/')
