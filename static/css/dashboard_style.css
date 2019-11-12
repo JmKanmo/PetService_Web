@@ -35,6 +35,8 @@ ol {
     border: 1px solid #e4e4e4;
     color: #000;
     font-size: 14px;
+    height: 260px;
+    overflow: hidden;
 }
 
 .animal_list li .profile_img {
@@ -46,7 +48,7 @@ ol {
 .animal_list li .profile_info {
     float: left;
     width: 140px;
-    height: 170px;
+    height: auto;
     font-size: 13px;
     margin-left: 10px;
 }
