@@ -10,25 +10,25 @@ a {
     color: #9c27b0;
 }
 
-.wrap{
+.wrap {
     text-align: center;
 }
 
-.wrap .cover_title{
+.wrap .cover_title {
     font-weight: bold;
     font-size: 30px;
-    color: #837676;
+    color: palevioletred;
     padding-bottom: 20px;
 }
 
-.carousel.slide{
+.carousel.slide {
     position: relative;
     width: 750px;
     margin: 0 auto;
     padding-top: 20px;
 }
 
-.carousel.slide::after{
+.carousel.slide::after {
     position: absolute;
     content: "";
     left: 0;
@@ -38,5 +38,3 @@ a {
     border: 1px solid rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.15);
 }
-
-

@@ -15,8 +15,86 @@ ol {
     padding: 0;
 }
 
+.search_form {
+    padding: 25px 20px 20px 20px;
+    width: 600px;
+    border: 1px solid #acacac;
+    margin: 0 auto;
+    background: rgba(245, 255, 149, 0.29);
+}
+
+.search_form .date_form {
+    padding-bottom: 20px;
+}
+
+.search_form input[type="date"] {
+    border-style: none;
+    border: 1px solid #000;
+}
+
+.search_form label {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.search_form label {
+    padding-right: 5px;
+}
+
+.search_form .end_day {
+    margin-left: 15px;
+}
+
+.search_form .condition_form {
+    padding-bottom: 20px;
+}
+
+.condition_form label {
+    position: relative;
+    float: left;
+    padding-right: 4px;
+    top: 10px;
+}
+
+.condition_form .sido_label {
+    margin-left: 15px;
+}
+
+.search_form .kinds_box {
+    float: left;
+    position: relative;
+    width: 110px;
+    height: 38px;
+    border: 1px solid #ddd;
+    line-height: 38px;
+}
+
+.kinds_box .kinds {
+    width: 100%;
+    height: 100%;
+    border: 0 none;
+    font-size: 16px;
+    padding: 0 0 0 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.kinds_box::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 4px;
+    margin: auto;
+    background: url(../images/select.png)no-repeat;
+    width: 13px;
+    height: 7px;
+    content: "";
+}
+
 .animal_list {
-    margin-left: -15px;
+    margin: 25px 0 0 -15px;
 }
 
 .animal_list li {

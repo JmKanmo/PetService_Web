@@ -49,8 +49,12 @@ def map():
 animal_list = Animal_Resource().get('', '', '', '', '')
 
 
-@BluePrint.route('/dashboard')
+@BluePrint.route('/dashboard', methods=['POST', 'GET'])
 def dashboard():
+    if request.method == 'POST':
+        print(request.form['start_day']+" " +
+              request.form['end_day']+" "+request.form['animal_kinds'])
+        print(request.form['sido_kinds']+" "+request.form['sigungu_kinds'])
     list_param = []
     random.shuffle(animal_list)
     if animal_list != None:
