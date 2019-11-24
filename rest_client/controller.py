@@ -46,28 +46,47 @@ def map():
 
 # 유기동물정보조회 코드영역
 
-animal_list = Animal_Resource().get('', '', '', '', '')
+animal_list = Animal_Resource().get('', '', '', '', '', '')
 
 
 @BluePrint.route('/dashboard', methods=['POST', 'GET'])
 def dashboard():
     if request.method == 'POST':
-        print(request.form['start_day']+" " +
-              request.form['end_day']+" "+request.form['animal_kinds'])
-        print(request.form['sido_kinds']+" "+request.form['sigungu_kinds'])
-    list_param = []
-    random.shuffle(animal_list)
-    if animal_list != None:
-        if len(animal_list) < 15:
-            for item in animal_list:
-                list_param.append(item)
-        else:
-            for cnt in range(0, 15):
-                list_param.append(animal_list[cnt])
+        start_day = request.form['start_day'].replace("-", "")
+        end_day = request.form['end_day'].replace("-", "")
+        animal_kinds = request.form['animal_kinds']
+        sido_kinds = '' if request.form['sido_kinds'] == '-선택-' else request.form['sido_kinds']
+        sigungu_kinds = '' if request.form['sigungu_kinds'] == '-선택-' else request.form['sigungu_kinds']
+        neutralization = request.form.getlist('neutralization')
+        search_list = Animal_Resource().get(start_day, end_day, animal_kinds,
+                                            sido_kinds, sigungu_kinds, ''.join(neutralization))
+        list_param = []
+        if search_list != None:
+            if len(search_list) < 15:
+                for item in search_list:
+                    list_param.append(item)
+            else:
+                for cnt in range(0, 15):
+                    list_param.append(search_list[cnt])
 
-    return render_template(
-        'dashboard.html', nav_menu="dashboard", animal_list=list_param
-    )
+        return render_template(
+            'dashboard.html', nav_menu="dashboard", animal_list=list_param
+        )
+
+    else:
+        list_param = []
+        random.shuffle(animal_list)
+        if animal_list != None:
+            if len(animal_list) < 15:
+                for item in animal_list:
+                    list_param.append(item)
+            else:
+                for cnt in range(0, 15):
+                    list_param.append(animal_list[cnt])
+
+        return render_template(
+            'dashboard.html', nav_menu="dashboard", animal_list=list_param
+        )
 
 
 @BluePrint.route('/animal_info')

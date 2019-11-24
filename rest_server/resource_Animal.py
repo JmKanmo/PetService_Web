@@ -19,10 +19,10 @@ class Animal_Resource:
         upkind = param[2] if param[2] != '' else '417000'
         kind = ''  # 품종코드 - 품종코드API 참조
         upr_cd = param[3] if param[3] != '' else ''  # 시도조회 API 참조
-        org_cd = ''  # 시군구조회 API 참조
+        org_cd = param[4] if param[4] != '' else ''  # 시군구조회 API 참조
         care_reg_no = ''  # 보호소번호 API 참조
         state = 'null'  # 기본값(null), 공고중(notice), 보호중(protect)
-        neuter_yn = param[4] if param[4] != '' else 'U'  # 중성화여부 (Y , N , U)
+        neuter_yn = param[5] if param[5] != '' else 'U'  # 중성화여부 (Y , N , U)
         pageNo = '1'  # 페이지번호
         numOfRows = '500'  # 페이지당 보여줄 개수
 

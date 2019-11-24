@@ -16,15 +16,18 @@ ol {
 }
 
 .search_form {
-    padding: 25px 20px 20px 20px;
-    width: 600px;
+    position: relative;
+    padding-bottom: 36px;
+    width: 660px;
     border: 1px solid #acacac;
     margin: 0 auto;
     background: rgba(245, 255, 149, 0.29);
 }
 
 .search_form .date_form {
-    padding-bottom: 20px;
+    margin-top: 20px;
+    padding: 0 0 5px 15px;
+    border-bottom: 1px solid #d1d1d1;
 }
 
 .search_form input[type="date"] {
@@ -47,7 +50,9 @@ ol {
 }
 
 .search_form .condition_form {
-    padding-bottom: 20px;
+    margin-top: 20px;
+    padding: 0 0 10px 15px;
+    border-bottom: 1px solid #d1d1d1;
 }
 
 .condition_form label {
@@ -91,6 +96,32 @@ ol {
     width: 13px;
     height: 7px;
     content: "";
+}
+
+.search_form .isNutralization {
+    float: left;
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+    font-size: 14px;
+    margin-left: 15px;
+    color: #333;
+}
+
+.search_form .custom-radio {
+    float: left;
+    margin-left: 10px;
+}
+
+.search_form .search_btn {
+    border: 1px solid #08a600;
+    background: #4ec53d;
+    font-size: 16px;
+    color: #fff;
+    width: 70px;
+    height: 35px;
+    position: absolute;
+    bottom: 0;
 }
 
 .animal_list {
