@@ -28,6 +28,8 @@ class Animal_Resource:
 
         option = 'bgnde='+bgnde\
             + '&endde='+endde\
+            + '&upr_cd='+upr_cd\
+            + '&org_cd='+org_cd\
             + '&pageNo='+pageNo\
             + '&numOfRows='+numOfRows\
             + '&upkind='+upkind\

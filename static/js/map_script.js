@@ -295,3 +295,15 @@ function makeOutListener(infowindow) {
         infowindow.close();
     };
 }
+
+// 보호소, 동물리스트에 동적으로 데이터추가
+
+var names = ['John', 'Jane', '석범수형', '롤쟁이', '플래티넘', '프로게이머가자!!']
+
+for (var i = 0; i < names.length; i++) {
+    var name = names[i];
+    var ul = document.getElementById("shelter_info");
+    var li = document.createElement('li');
+    li.appendChild(document.createTextNode(name));
+    ul.appendChild(li);
+}
