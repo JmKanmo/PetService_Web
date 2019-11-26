@@ -1,6 +1,4 @@
 import requests
-from urllib.request import Request, urlopen
-from urllib.parse import urlencode, quote_plus, unquote
 import xmltodict
 import json
 
@@ -13,4 +11,18 @@ class resource_Shelter:
         pass
 
     def get(self, *param):
-        pass
+        option = 'addr=' + param[0]\
+
+        queryParams = option + '&ServiceKey='+ANIMAL_API_KEY\
+
+        try:
+            URL = ANIMAL_URL + queryParams
+            result = requests.get(URL)
+            dict_type = xmltodict.parse(result.content)
+            json_type = json.dumps(dict_type)
+            dict2_type = json.loads(json_type)
+            body = dict2_type['response']['body']
+            items = body['items']
+            return items['item']
+        except:
+            return None

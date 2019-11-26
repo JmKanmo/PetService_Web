@@ -298,12 +298,17 @@ function makeOutListener(infowindow) {
 
 // 보호소, 동물리스트에 동적으로 데이터추가
 
-var names = ['John', 'Jane', '석범수형', '롤쟁이', '플래티넘', '프로게이머가자!!']
-
-for (var i = 0; i < names.length; i++) {
-    var name = names[i];
+for (var i = 0; i < shelter_list.length; i++) {
+    console.log(shelter_list[i]);
     var ul = document.getElementById("shelter_info");
     var li = document.createElement('li');
-    li.appendChild(document.createTextNode(name));
+    ul.style.textAlign = "left";
+    li.style.padding = "10px";
+    li.style.borderBottom = "1px solid #d1d1d1";
+    li.style.cursor = "pointer";
+    li.onclick = function () {
+        console.log('여기에 새로운 창 떠서 부가적인 정보입력(동물 부가정보표와 같은 형식으로 html파일,css파일추가 생성)\n');
+    };
+    li.appendChild(document.createTextNode(i + 1 + ". " + shelter_list[i]['orgNm'] + " ☎: " + shelter_list[i]['tel'] + " / " + shelter_list[i]['memberNm']));
     ul.appendChild(li);
 }

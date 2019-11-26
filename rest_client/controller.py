@@ -5,6 +5,7 @@ from flask import request
 from rest_server.resource_Map import KakaoMap_Resource
 from rest_client.blue_print import BluePrint
 from rest_server.resource_Animal import Animal_Resource
+from rest_server.resource_Shelter import resource_Shelter
 import random
 
 
@@ -33,6 +34,7 @@ def map():
         pos_x = prev_pos[0]
         pos_y = prev_pos[1]
     else:
+        shelter_list = resource_Shelter().get(address)
         address_info = dict(document[0])
         pos_x = address_info["address"]['x']
         pos_y = address_info["address"]['y']
@@ -40,7 +42,7 @@ def map():
         prev_pos[1] = pos_y
 
     return render_template(
-        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map"
+        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map", shelter_list=shelter_list
     )
 
 
