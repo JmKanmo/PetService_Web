@@ -29,12 +29,13 @@ def map():
 
     flag = True
     document = KakaoMap_Resource().get(address)
+    shelter_list = resource_Shelter().get(address)
 
     if not document:
         pos_x = prev_pos[0]
         pos_y = prev_pos[1]
+
     else:
-        shelter_list = resource_Shelter().get(address)
         address_info = dict(document[0])
         pos_x = address_info["address"]['x']
         pos_y = address_info["address"]['y']
@@ -42,7 +43,7 @@ def map():
         prev_pos[1] = pos_y
 
     return render_template(
-        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map", shelter_list={} if shelter_list is None else shelter_list
+        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map", shelter_list=shelter_list
     )
 
 
@@ -95,4 +96,11 @@ def dashboard():
 def animal_info():
     return render_template(
         'animal_info.html'
+    )
+
+
+@BluePrint.route('/shelter_info')
+def shelter_info():
+    return render_template(
+        'shelter_info.html'
     )

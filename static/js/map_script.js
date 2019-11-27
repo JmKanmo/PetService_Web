@@ -298,17 +298,106 @@ function makeOutListener(infowindow) {
 
 // 보호소, 동물리스트에 동적으로 데이터추가
 
+var shelter_info = null;
+var li_list = new Array();
+var hash_map = {};
+
 for (var i = 0; i < shelter_list.length; i++) {
-    // console.log(shelter_list[i]);
     var ul = document.getElementById("shelter_info");
-    var li = document.createElement('li');
+    li_list[i] = document.createElement('li');
     ul.style.textAlign = "left";
-    li.style.padding = "10px";
-    li.style.borderBottom = "1px solid #d1d1d1";
-    li.style.cursor = "pointer";
-    li.onclick = function () {
-        console.log('여기에 새로운 창 떠서 부가적인 정보입력(동물 부가정보표와 같은 형식으로 html파일,css파일추가 생성)\n');
-    };
-    li.appendChild(document.createTextNode(shelter_list[i]['orgNm'] + " ☎: " + shelter_list[i]['tel'] + " / " + shelter_list[i]['memberNm']));
-    ul.appendChild(li);
+    li_list[i].style.padding = "10px";
+    li_list[i].style.borderBottom = "1px solid #d1d1d1";
+    li_list[i].style.cursor = "pointer";
+    li_list[i].id = 'idx_' + (i + 1);
+    hash_map[li_list[i].id] = i + 1;
+    li_list[i].appendChild(document.createTextNode(shelter_list[i]['orgNm'] + " ☎: " + shelter_list[i]['tel'] + " / " + shelter_list[i]['memberNm']));
+    ul.appendChild(li_list[i]);
+}
+
+$(document).ready(function () {
+
+    $("#idx_1").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[0];
+    });
+
+    $("#idx_2").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[1];
+    });
+
+    $("#idx_3").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[2];
+    });
+
+    $("#idx_4").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[3];
+    });
+
+    $("#idx_5").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[4];
+    });
+
+    $("#idx_6").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[5];
+    });
+
+    $("#idx_7").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[6];
+    });
+
+    $("#idx_8").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[7];
+    });
+
+    $("#idx_9").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[8];
+    });
+
+    $("#idx_10").click(function () {
+        var url = '/bp/shelter_info';
+        var name = "유기동물보호시설상세정보";
+        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+        window.open(url, name, option);
+        shelter_info = shelter_list[9];
+    });
+});
+
+function myfunc() {
+    return shelter_info;
 }
