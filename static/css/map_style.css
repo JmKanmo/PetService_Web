@@ -327,7 +327,15 @@
 }
 
 .list_box {
-    padding: 10px;
+    text-align: center;
+    padding: 25px 10px 10px 10px;
+    margin-top: -1px;
+}
+
+.list_box .list_title {
+    font-weight: bold;
+    color: #28569a;
+    padding: 10px 0 25px 0;
 }
 
 .list_box ul {
@@ -335,15 +343,13 @@
 }
 
 .list_box .shelter_list {
-    width: 50%;
+    width: 40%;
     float: left;
-    border-left: 1px solid #d1d1d1;
-    border-right: 1px solid #d1d1d1;
-    border-top: 1px solid #d1d1d1;
+    border: 1px solid #d1d1d1;
 }
 
 .list_box .animal_list {
-    width: 50%;
+    width: 60%;
     float: left;
     border: 1px solid #d1d1d1;
 }

@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+.clear_fix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.title {
+    margin: auto;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.info_wrap {
+    width: 450px;
+    height: auto;
+    border: 1px solid black;
+    border-bottom: none;
+    margin: 0 auto;
+}
+
+.info_wrap .info_box {
+    border-bottom: 1px solid#607d8bd9;
+    overflow: hidden;
+}
+
+.info_wrap .title {
+    font-weight: normal;
+    font-size: 16px;
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 35px;
+    line-height: 35px;
+    background: #ececec;
+    color: #585b48;
+    padding: 0 10px 0 10px;
+}
+
+.info_wrap .text {
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 10px;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px 0 10px;
+}

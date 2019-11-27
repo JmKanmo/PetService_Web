@@ -15,14 +15,14 @@ prev_pos = ['', '']
 
 @BluePrint.route('/maps', methods=['POST', 'GET'])
 def map():
-    address = "충북 음성군 대소면"  # 초기주소
+    address = "음성군 대소면"  # 초기주소
     flag = False
 
     if request.method == 'POST':
         if not request.form['address']:
 
             return render_template(
-                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu="map"
+                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu="map", shelter_list=resource_Shelter().get(address)
             )
 
         address = request.form['address']
@@ -42,7 +42,7 @@ def map():
         prev_pos[1] = pos_y
 
     return render_template(
-        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map", shelter_list=shelter_list
+        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map", shelter_list={} if shelter_list is None else shelter_list
     )
 
 

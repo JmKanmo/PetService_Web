@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var shelter_info = opener.parent.myfunc(); // 화면에 표시할 보호시설의 상세정보
+    </script>
+</head>
+
+<body>
+    <!-- 마크업디자인 -->
+    <div class="wrap">
+        <h1 class="title">유기동물 상세정보</h1>
+        <div class="info_wrap">
+            <!-- 공고번호 -->
+            <div class="info_box clear_fix">
+                <span class="title">공고번호</span>
+                <span id="noticeNo" class="text"></span>
+            </div>
+
+            <!-- 공고기한 -->
+            <div class="info_box clear_fix">
+                <span class="title">공고기한</span>
+                <span id="notice_date" class="text"></span>
+            </div>
+
+            <!-- 접수일 -->
+            <div class="info_box clear_fix">
+                <span class="title">접수일시</span>
+                <span id="happenDt" class="text"></span>
+            </div>
+
+            <!-- 발견장소 -->
+            <div class="info_box clear_fix">
+                <span class="title">발견장소</span>
+                <span id="happenPlace" class="text"></span>
+            </div>
+
+            <!-- 보호센터이름 -->
+            <div class="info_box clear_fix">
+                <span class="title">보호센터이름</span>
+                <span id="careNm" class="text"></span>
+            </div>
+
+            <!-- 전화번호 -->
+            <div class="info_box clear_fix">
+                <span class="title">전화번호</span>
+                <span id="careTel" class="text"></span>
+            </div>
+
+            <!-- 보호장소 -->
+            <div class="careAddr info_box clear_fix">
+                <span class="title">보호장소</span>
+                <span id="careAddr" class="text"></span>
+            </div>
+
+            <!-- 관할기관 -->
+            <div class="orgNm info_box clear_fix">
+                <span class="title">관할기관</span>
+                <span id="orgNm" class="text"></span>
+            </div>
+
+            <!-- 담당자 -->
+            <div class="chargeNm info_box clear_fix">
+                <span class="title">담당자</span>
+                <span id="chargeNm" class="text"></span>
+            </div>
+
+            <!-- 담당자연락처 -->
+            <div class="officetel info_box clear_fix">
+                <span class="title">담당자연락처</span>
+                <span id="officetel" class="text"></span>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/shelter_info_script.js') }}"></script>
+</body>
+
+</html>
