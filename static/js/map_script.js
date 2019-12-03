@@ -6,8 +6,9 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption);
-map.setKeyboardShortcuts(true);
+var cur_position = ""; // 현재 위치정보변수
 
+map.setKeyboardShortcuts(true);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
@@ -27,6 +28,25 @@ var marker = new kakao.maps.Marker({
     infowindow = new kakao.maps.InfoWindow({
         zindex: 1
     }); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+
+// 현재위치정보를 지정된경로로 전송하는 함수(근처 유기동물,보호시설정보출력을 위함)  
+function send_data() {
+    $.ajax({
+        url: '/search',
+        contentType: 'application/json',
+        method: 'POST',
+        data: JSON.stringify({
+            username: "hello",
+            password: "junkang"
+        }),
+        error: function (res) {
+            alert('탐색실패');
+        }
+    }).done(function (res) {
+        console.log(res);
+    });
+}
 
 // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
 searchAddrFromCoords(map.getCenter(), displayCenterInfo);
@@ -155,14 +175,16 @@ function searchDetailAddrFromCoords(coords, callback) {
 function displayCenterInfo(result, status) {
     if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
-
+        var position = "";
         for (var i = 0; i < result.length; i++) {
             // 행정동의 region_type 값은 'H' 이므로
             if (result[i].region_type === 'H') {
                 infoDiv.innerHTML = result[i].address_name;
+                position += result[i].address_name;
                 break;
             }
         }
+        console.log(cur_position = position);
     }
 }
 

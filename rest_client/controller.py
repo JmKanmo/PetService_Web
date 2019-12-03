@@ -9,16 +9,16 @@ from rest_server.resource_Shelter import resource_Shelter
 import random
 
 
-# 지도검색시스템 동작관리 영역
+# 지도검색시스템(보호소,유기동물 정보) 관리영역
 prev_pos = ['', '']
 
 
 @BluePrint.route('/maps', methods=['POST', 'GET'])
 def map():
     address = "음성군 대소면"  # 초기주소
-    flag = False
 
     if request.method == 'POST':
+
         if not request.form['address']:
 
             return render_template(
@@ -27,7 +27,6 @@ def map():
 
         address = request.form['address']
 
-    flag = True
     document = KakaoMap_Resource().get(address)
     shelter_list = resource_Shelter().get(address)
 
@@ -48,7 +47,6 @@ def map():
 
 
 # 유기동물정보조회 코드영역
-
 animal_list = Animal_Resource().get('', '', '', '', '', '')
 
 
@@ -92,13 +90,14 @@ def dashboard():
         )
 
 
+# 동물정보관리영역
 @BluePrint.route('/animal_info')
 def animal_info():
     return render_template(
         'animal_info.html'
     )
 
-
+# 보호업체정보관리영역
 @BluePrint.route('/shelter_info')
 def shelter_info():
     return render_template(
