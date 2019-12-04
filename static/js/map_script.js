@@ -37,8 +37,7 @@ function send_data() {
         contentType: 'application/json',
         method: 'POST',
         data: JSON.stringify({
-            username: "hello",
-            password: "junkang"
+            address: cur_position
         }),
         error: function (res) {
             alert('탐색실패');
@@ -184,7 +183,8 @@ function displayCenterInfo(result, status) {
                 break;
             }
         }
-        console.log(cur_position = position);
+        cur_position = position;
+        send_data();
     }
 }
 

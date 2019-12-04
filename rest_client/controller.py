@@ -9,7 +9,7 @@ from rest_server.resource_Shelter import resource_Shelter
 import random
 
 
-# 지도검색시스템(보호소,유기동물 정보) 관리영역
+# 지도검색시스템 관리영역
 prev_pos = ['', '']
 
 
