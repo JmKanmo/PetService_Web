@@ -30,8 +30,12 @@ var marker = new kakao.maps.Marker({
     }); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 
 
+var shelter_info = null; //보호소 상세정보저장
+var shelter_list = null; //보호소리스트정보저장
+var animal_list = null; //유기동물정보저장
+
 // 현재위치정보를 지정된경로로 전송하는 함수(근처 유기동물,보호시설정보출력을 위함)  
-function send_data() {
+function communicate_info() {
     $.ajax({
         url: '/search',
         contentType: 'application/json',
@@ -43,7 +47,10 @@ function send_data() {
             alert('탐색실패');
         }
     }).done(function (res) {
-        console.log(res);
+        shelter_list = res['shelter_info'];
+        animal_list = res['animal_info'];
+        add_shelter_list(shelter_list);
+        add_animal_list(animal_list);
     });
 }
 
@@ -184,7 +191,7 @@ function displayCenterInfo(result, status) {
             }
         }
         cur_position = position;
-        send_data();
+        communicate_info();
     }
 }
 
@@ -318,107 +325,47 @@ function makeOutListener(infowindow) {
     };
 }
 
-// 보호소, 동물리스트에 동적으로 데이터추가
-
-var shelter_info = null;
-var li_list = new Array();
-var hash_map = {};
-
-for (var i = 0; i < shelter_list.length; i++) {
+// 보호소리스트에 동적으로 보호소데이터추가
+function add_shelter_list(shelter_list) {
+    var li_list = new Array();
+    var hash_map = {};
     var ul = document.getElementById("shelter_info");
-    li_list[i] = document.createElement('li');
-    ul.style.textAlign = "left";
-    li_list[i].style.padding = "10px";
-    li_list[i].style.borderBottom = "1px solid #d1d1d1";
-    li_list[i].style.cursor = "pointer";
-    li_list[i].id = 'idx_' + (i + 1);
-    hash_map[li_list[i].id] = i + 1;
-    li_list[i].appendChild(document.createTextNode(shelter_list[i]['orgNm'] + " ☎: " + shelter_list[i]['tel'] + " / " + shelter_list[i]['memberNm']));
-    ul.appendChild(li_list[i]);
+
+    if (ul) {
+        while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+        }
+    }
+
+    for (var i = 0; i < shelter_list.length; i++) {
+        li_list[i] = document.createElement('li');
+        ul.style.textAlign = "left";
+        li_list[i].style.padding = "10px";
+        li_list[i].style.borderBottom = "1px solid #d1d1d1";
+        li_list[i].style.cursor = "pointer";
+        li_list[i].id = 'idx_' + (i + 1);
+        li_list[i].className = 'shelter'
+        hash_map[li_list[i].id] = i + 1;
+        li_list[i].appendChild(document.createTextNode(shelter_list[i]['orgNm'] + " ☎: " + shelter_list[i]['tel'] + " / " + shelter_list[i]['memberNm']));
+        ul.appendChild(li_list[i]);
+    }
+
+    $(document).ready(function () {
+        $('.shelter').click(function () {
+            var url = '/bp/shelter_info';
+            var name = "유기동물보호시설상세정보";
+            var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+            window.open(url, name, option);
+            shelter_info = shelter_list[$('.shelter').index(this)];
+        });
+    });
 }
 
-$(document).ready(function () {
+//유기동물리스트에 동적으로 유기동물데이터추가
+function add_animal_list(animal_list) {
 
-    $("#idx_1").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[0];
-    });
 
-    $("#idx_2").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[1];
-    });
-
-    $("#idx_3").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[2];
-    });
-
-    $("#idx_4").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[3];
-    });
-
-    $("#idx_5").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[4];
-    });
-
-    $("#idx_6").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[5];
-    });
-
-    $("#idx_7").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[6];
-    });
-
-    $("#idx_8").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[7];
-    });
-
-    $("#idx_9").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[8];
-    });
-
-    $("#idx_10").click(function () {
-        var url = '/bp/shelter_info';
-        var name = "유기동물보호시설상세정보";
-        var option = "width = 500, height = 300, top = 100, left = 350, location = no";
-        window.open(url, name, option);
-        shelter_info = shelter_list[9];
-    });
-});
+}
 
 function myfunc() {
     return shelter_info;

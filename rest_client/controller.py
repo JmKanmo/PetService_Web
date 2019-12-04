@@ -5,7 +5,6 @@ from flask import request
 from rest_server.resource_Map import KakaoMap_Resource
 from rest_client.blue_print import BluePrint
 from rest_server.resource_Animal import Animal_Resource
-from rest_server.resource_Shelter import resource_Shelter
 import random
 
 
@@ -22,13 +21,12 @@ def map():
         if not request.form['address']:
 
             return render_template(
-                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu="map", shelter_list=resource_Shelter().get(address)
+                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu="map"
             )
 
         address = request.form['address']
 
     document = KakaoMap_Resource().get(address)
-    shelter_list = resource_Shelter().get(address)
 
     if not document:
         pos_x = prev_pos[0]
@@ -42,12 +40,12 @@ def map():
         prev_pos[1] = pos_y
 
     return render_template(
-        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map", shelter_list=shelter_list
+        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map"
     )
 
 
 # 유기동물정보조회 코드영역
-animal_list = Animal_Resource().get('', '', '', '', '', '')
+animal_list = Animal_Resource().get_searchAnimal('', '', '', '', '', '')
 
 
 @BluePrint.route('/dashboard', methods=['POST', 'GET'])
@@ -59,8 +57,8 @@ def dashboard():
         sido_kinds = '' if request.form['sido_kinds'] == '-선택-' else request.form['sido_kinds']
         sigungu_kinds = '' if request.form['sigungu_kinds'] == '-선택-' else request.form['sigungu_kinds']
         neutralization = request.form.getlist('neutralization')
-        search_list = Animal_Resource().get(start_day, end_day, animal_kinds,
-                                            sido_kinds, sigungu_kinds, ''.join(neutralization))
+        search_list = Animal_Resource().get_searchAnimal(start_day, end_day, animal_kinds,
+                                                         sido_kinds, sigungu_kinds, ''.join(neutralization))
         list_param = []
         if search_list != None:
             if len(search_list) < 15:
@@ -90,14 +88,14 @@ def dashboard():
         )
 
 
-# 동물정보관리영역
+# 동물상세정보팝업창호출
 @BluePrint.route('/animal_info')
 def animal_info():
     return render_template(
         'animal_info.html'
     )
 
-# 보호업체정보관리영역
+# 보호업체상세정보팝업창호출
 @BluePrint.route('/shelter_info')
 def shelter_info():
     return render_template(
