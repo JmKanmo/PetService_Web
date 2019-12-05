@@ -76,7 +76,7 @@ class Animal_Resource:
     def get_NearAnimal(self, address):
         parsed_address = address.split(' ')  # 파싱주소([0]-시도, [1]-시군구)
         animal_info = []
-        animal_sidoinfo = []
+        # animal_sidoinfo = []
         animal_sigunguinfo = []
 
         try:
@@ -96,7 +96,7 @@ class Animal_Resource:
                             break
                     break
 
-            animal_info = animal_sigunguinfo+animal_sidoinfo
+            animal_info = animal_sigunguinfo
 
             return animal_info
         except:
