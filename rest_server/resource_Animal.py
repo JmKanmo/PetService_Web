@@ -71,7 +71,7 @@ class Animal_Resource:
             return items['item']
 
         except:
-            return None
+            return []
 
     def get_NearAnimal(self, address):
         parsed_address = address.split(' ')  # 파싱주소([0]-시도, [1]-시군구)
@@ -82,10 +82,10 @@ class Animal_Resource:
         try:
             for json_data in Location_Resource().get_sidocode(parsed_address):
                 if json_data['orgdownNm'] == parsed_address[0]:
-                    for animal in self.get_searchAnimal(
-                            '20191201', '20191204', '', json_data['orgCd'], '', ''):
-                        if animal['processState'] == '보호중' or animal['processState'] == '공고중':
-                            animal_sidoinfo.append(animal)
+                    # for animal in self.get_searchAnimal(
+                    #         '20191201', '20191204', '', json_data['orgCd'], '', ''):
+                    #     if animal['processState'] == '보호중' or animal['processState'] == '공고중':
+                    #         animal_sidoinfo.append(animal)
 
                     for sigungu in Location_Resource().get_sigungucode(json_data['orgCd']):
                         if sigungu['orgdownNm'] == parsed_address[1]:

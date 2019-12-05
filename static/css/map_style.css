@@ -351,6 +351,8 @@
 .list_box .animal_list {
     width: 60%;
     float: left;
+    height: 400px;
+    overflow: scroll;
     border: 1px solid #d1d1d1;
 }
 

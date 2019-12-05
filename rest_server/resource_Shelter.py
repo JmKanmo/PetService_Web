@@ -30,8 +30,8 @@ class resource_Shelter:
     def get_NearShelter(self, address):
         parsed_address = address.split(' ')
 
-        sido_shelter = self.get_searchShelter(parsed_address[0])
+        # sido_shelter = self.get_searchShelter(parsed_address[0])
         sigungu_shelter = self.get_searchShelter(
             parsed_address[0]+' '+parsed_address[1])
 
-        return sigungu_shelter+sido_shelter
+        return sigungu_shelter  # +sido_shelter

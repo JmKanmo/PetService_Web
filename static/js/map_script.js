@@ -32,6 +32,7 @@ var marker = new kakao.maps.Marker({
 
 var shelter_info = null; //보호소 상세정보저장
 var shelter_list = null; //보호소리스트정보저장
+var animal_info = null;//유기동물 상세정보저장
 var animal_list = null; //유기동물정보저장
 
 // 현재위치정보를 지정된경로로 전송하는 함수(근처 유기동물,보호시설정보출력을 위함)  
@@ -328,7 +329,6 @@ function makeOutListener(infowindow) {
 // 보호소리스트에 동적으로 보호소데이터추가
 function add_shelter_list(shelter_list) {
     var li_list = new Array();
-    var hash_map = {};
     var ul = document.getElementById("shelter_info");
 
     if (ul) {
@@ -343,9 +343,7 @@ function add_shelter_list(shelter_list) {
         li_list[i].style.padding = "10px";
         li_list[i].style.borderBottom = "1px solid #d1d1d1";
         li_list[i].style.cursor = "pointer";
-        li_list[i].id = 'idx_' + (i + 1);
         li_list[i].className = 'shelter'
-        hash_map[li_list[i].id] = i + 1;
         li_list[i].appendChild(document.createTextNode(shelter_list[i]['orgNm'] + " ☎: " + shelter_list[i]['tel'] + " / " + shelter_list[i]['memberNm']));
         ul.appendChild(li_list[i]);
     }
@@ -363,10 +361,83 @@ function add_shelter_list(shelter_list) {
 
 //유기동물리스트에 동적으로 유기동물데이터추가
 function add_animal_list(animal_list) {
+    var li_list = new Array();
+    var ul = document.getElementById('animal_info');
 
+    if (ul) {
+        while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+        }
+    }
 
+    for (var i = 0; i < animal_list.length; i++) {
+        li_list[i] = document.createElement('li');
+        li_list[i].className = 'animal';
+        li_list[i].style.cssFloat = "left";
+        li_list[i].style.width = '25%';
+        li_list[i].style.border = '1px solid #d1d1d1';
+        li_list[i].style.cursor = 'pointer';
+
+        var img = document.createElement('img');
+        img.src = animal_list[i]['popfile'];
+        img.style.display = 'block';
+        img.style.width = '100%';
+        img.style.height = '150px';
+
+        var info_div = document.createElement('div');
+        var info = new Array();
+
+        info_div.style.textAlign = 'left';
+        info_div.style.padding = '5px 5px 5px 10px';
+
+        for (var n = 1; n <= 4; n++) {
+            info[n] = document.createElement('span');
+            info[n].style.display = 'block';
+            info[n].style.fontWeight = 'bold';
+            info[n].style.fontSize = '13px';
+            if (n < 4) { info[n].style.marginBottom = '3px'; }
+
+            switch (n) {
+                case 1:
+                    info[n].innerHTML = '나이: ' + animal_list[i]['age'];
+                    break;
+
+                case 2:
+                    if (animal_list[i]['sexCd'] == 'M') info[n].innerHTML = '성별: 수컷';
+                    else info[n].innerHTML = '성별: 암컷';
+                    break;
+
+                case 3:
+                    info[n].innerHTML = '몸무게: ' + animal_list[i]['weight'];
+                    break;
+
+                case 4:
+                    info[n].innerHTML = '품종: ' + animal_list[i]['kindCd'];
+                    break;
+            }
+            info_div.appendChild(info[n]);
+        }
+
+        li_list[i].appendChild(img);
+        li_list[i].appendChild(info_div);
+        ul.appendChild(li_list[i]);
+    }
+
+    $(document).ready(function () {
+        $('.animal').click(function () {
+            var url = '/bp/animal_info';
+            var name = "유기동물상세정보";
+            var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+            window.open(url, name, option);
+            animal_info = animal_list[$('.animal').index(this)];
+        });
+    });
 }
 
-function myfunc() {
+function shelter_func() {
     return shelter_info;
+}
+
+function animal_func() {
+    return animal_info;
 }

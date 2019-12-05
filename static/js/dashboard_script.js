@@ -59,7 +59,7 @@ function profile_onclick() {
 }
 
 // 상세정보팝업창에서 호출되는 함수(상세정보저장변수 반환)
-function myfunc() {
+function animal_func() {
     return info_value
 }
 
