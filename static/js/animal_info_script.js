@@ -12,6 +12,7 @@ document.getElementById("notice_date").innerHTML = parse(animal_info['noticeSdt'
 document.getElementById("happenDt").innerHTML = parse(animal_info['happenDt']);
 document.getElementById("happenPlace").innerHTML = animal_info['happenPlace'];
 document.getElementById("careNm").innerHTML = animal_info['careNm'];
+$("#careNm").attr("href", "https://www.google.com/search?q=" + animal_info['careNm']);
 document.getElementById("careTel").innerHTML = animal_info['careTel'];
 document.getElementById("careAddr").innerHTML = animal_info['careAddr'];
 document.getElementById("orgNm").innerHTML = animal_info['orgNm'];

@@ -23,7 +23,7 @@
     margin: 0 auto;
 }
 
-.info_wrap .info_box{
+.info_wrap .info_box {
     border-bottom: 1px solid#607d8bd9;
     overflow: hidden;
 }
@@ -41,11 +41,16 @@
     padding: 0 10px 0 10px;
 }
 
-.info_wrap .text{
+.info_wrap .text {
     font-weight: normal;
     font-size: 14px;
     margin-left: 10px;
     height: 35px;
     line-height: 35px;
     padding: 0 10px 0 10px;
+}
+
+.info_wrap .text.shelter_name {
+    text-decoration: none;
+    color: rgb(46, 65, 179);
 }

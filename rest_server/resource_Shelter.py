@@ -55,6 +55,8 @@ class resource_Shelter:
                         for item in items['item']:
                             if type(item).__name__ != 'dict':
                                 continue
+                            if item['careNm'].rfind('동물병원') != -1 or item['careNm'].rfind('동물클리닉') != -1:
+                                continue
                             sigungu_shelter.append({
                                 'addr': '비공개',
                                 'addrDtl': '비공개',

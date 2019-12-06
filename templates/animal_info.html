@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../static/css/reset.css">
     <link rel="shortcut icon" href="#" />
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         var animal_info = opener.parent.animal_func(); // 화면에 표시할 동물의 상세정보
     </script>
@@ -46,7 +47,7 @@
             <!-- 보호센터이름 -->
             <div class="info_box clear_fix">
                 <span class="title">보호센터이름</span>
-                <span id="careNm" class="text"></span>
+                <a href="" id="careNm" class="text shelter_name" title="클릭하시면 검색결과로 이동합니다." target="_blank"></a>
             </div>
 
             <!-- 전화번호 -->

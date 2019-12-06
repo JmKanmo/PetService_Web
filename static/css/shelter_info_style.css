@@ -49,3 +49,8 @@
     line-height: 35px;
     padding: 0 10px 0 10px;
 }
+
+.info_wrap .text.shelter_name {
+    text-decoration: none;
+    color: rgb(46, 65, 179);
+}
