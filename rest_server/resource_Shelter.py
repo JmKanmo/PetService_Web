@@ -67,6 +67,18 @@ class resource_Shelter:
                             })
                 break
 
+        if sigungu_shelter is None:
+            sigungu_shelter = []
+
+        if(type(sigungu_shelter) is dict):
+            sigungu_shelter = list(sigungu_shelter)
+
+        if sigungu_agency is None:
+            sigungu_agency = []
+
+        if(type(sigungu_agency) is dict):
+            sigungu_agency = list(sigungu_agency)
+
         ret = sigungu_shelter+sigungu_agency
         random.shuffle(ret)
         return ret

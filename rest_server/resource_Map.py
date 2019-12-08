@@ -17,3 +17,20 @@ class KakaoMap_Resource:
 
         docs = res.json()
         return docs["documents"]
+
+
+class Geocode_Resource:
+    def __init(self):
+        pass
+
+    def get(self, address):
+        URL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + \
+            address+"&key=AIzaSyAPe83VKDQLfw_5kVvTYSvM0j0Z2HX8ff0"
+        result = requests.get(URL).json()
+
+        if result['status'] == 'OK':
+            pos = result['results'][0]['geometry']['location']
+            return {'idx_1': pos['lat'], 'idx_2': pos['lng']}
+
+        else:
+            return None

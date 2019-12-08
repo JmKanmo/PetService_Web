@@ -2,15 +2,13 @@ from flask import Blueprint
 from flask import render_template
 import requests
 from flask import request
-from rest_server.resource_Map import KakaoMap_Resource
+from rest_server.resource_Map import KakaoMap_Resource, Geocode_Resource
 from rest_client.blue_print import BluePrint
 from rest_server.resource_Animal import Animal_Resource
 import random
 
 
 # 지도검색시스템 관리영역
-prev_pos = ['', '']
-
 
 @BluePrint.route('/maps', methods=['POST', 'GET'])
 def map():
@@ -19,28 +17,21 @@ def map():
     if request.method == 'POST':
 
         if not request.form['address']:
+            pos = Geocode_Resource().get(address)
 
             return render_template(
-                'map_template.html', pos_y=prev_pos[0], pos_x=prev_pos[1], nav_menu="map"
+                'map_template.html', pos_y=pos['idx_2'], pos_x=pos['idx_1'], nav_menu="map"
             )
 
         address = request.form['address']
 
-    document = KakaoMap_Resource().get(address)
+    pos = Geocode_Resource().get(address)
 
-    if not document:
-        pos_x = prev_pos[0]
-        pos_y = prev_pos[1]
-
-    else:
-        address_info = dict(document[0])
-        pos_x = address_info["address"]['x']
-        pos_y = address_info["address"]['y']
-        prev_pos[0] = pos_x
-        prev_pos[1] = pos_y
+    if pos == None:
+        pos = Geocode_Resource().get('음성군 대소면')
 
     return render_template(
-        'map_template.html', pos_y=pos_x, pos_x=pos_y, nav_menu="map"
+        'map_template.html', pos_y=pos['idx_2'], pos_x=pos['idx_1'], nav_menu="map"
     )
 
 

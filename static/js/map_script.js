@@ -29,6 +29,7 @@ var marker = new kakao.maps.Marker({
         zindex: 1
     }); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 
+var map_flag = false; //지도로딩체크
 
 var shelter_info = null; //보호소 상세정보저장
 var shelter_list = null; //보호소리스트정보저장
@@ -190,15 +191,30 @@ function displayCenterInfo(result, status) {
     if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
         var position = "";
-        for (var i = 0; i < result.length; i++) {
-            // 행정동의 region_type 값은 'H' 이므로
-            if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
-                position += result[i].address_name;
-                break;
-            }
-        }
+        infoDiv.innerHTML = result[0].address_name;
+        position += result[0].address_name;
         cur_position = position;
+        if (map_flag == false) {
+
+            var detailAddr = !!result[0].road_address ? '<div class="address">도로명주소 : ' + result[0].road_address + '</div>' : '';
+            detailAddr += '<div class="address">지번 주소 : ' + result[0].address_name + '</div>';
+
+            var address_list = [String(map.getCenter()['Ga']) + ',', String(map.getCenter()['Ha'])];
+
+            var content = '<div class="bAddr clear_fix">' +
+                '<span class="title">주소정보</span>' + detailAddr
+                + '<a class="infowindow_menu" href="https://map.kakao.com/link/to/' + + result[0].address_name + '" target="_blank">길찾기</a>'
+                + '<div class="infowindow_menu" onclick="roadView(' + address_list[0] + address_list[1] + ')">로드뷰</div>'
+                + '</div>';
+
+            //마커표시
+            marker.setPosition(map.getCenter());
+            marker.setMap(map);
+            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+            map_flag = true;
+        }
         communicate_info();
     }
 }
