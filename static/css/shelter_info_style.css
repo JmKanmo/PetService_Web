@@ -54,3 +54,9 @@
     text-decoration: none;
     color: rgb(46, 65, 179);
 }
+
+.info_box .marker_link {
+    cursor: pointer;
+    font-size: 13px;
+    color: rgb(22, 206, 181);
+}

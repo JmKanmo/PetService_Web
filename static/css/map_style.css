@@ -224,7 +224,7 @@
     height: 30px;
     background: #eee;
     border-bottom: 1px solid #ddd;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -257,6 +257,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding-bottom: 3px;
 }
 
 .desc .jibun {
@@ -289,6 +290,22 @@
 
 .info .link {
     color: #5085BB;
+}
+
+.menu_box .elem {
+    float: left;
+}
+
+.menu_box .roadview {
+    margin-left: 8px;
+    color: #5085BB;
+    cursor: pointer;
+}
+
+.menu_box .del_marker {
+    margin-left: 8px;
+    color: #5085BB;
+    cursor: pointer;
 }
 
 .road_view {

@@ -23,11 +23,13 @@ var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 
 var marker = new kakao.maps.Marker({
     position: markerPosition,
-    image: markerImage // 마커이미지 설정 
+    // image: markerImage // 마커이미지 설정 
 }),
     infowindow = new kakao.maps.InfoWindow({
         zindex: 1
     }); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+var shelterMarker_json = {}; // 표시된 보호소마커 저장 json
 
 var map_flag = false; //지도로딩체크
 
@@ -124,53 +126,6 @@ kakao.maps.event.addListener(map, 'click', mapClickHandler);
 var overlay = null;
 var marker_click = false
 
-// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-function closeOverlay() {
-    overlay.setMap(null);
-    kakao.maps.event.addListener(map, 'click', mapClickHandler);
-    marker_click = false;
-}
-
-// 마커를 클릭했을 때 오버레이를 표시하는 클릭핸들러 
-var markerClickHandler = function () {
-    if (marker_click) {
-        kakao.maps.event.addListener(map, 'click', mapClickHandler);
-        overlay.setMap(null);
-        marker_click = false;
-    } else {
-        var content = '<div class="wrap">' +
-            '    <div class="info">' +
-            '        <div class="title">' +
-            '            카카오 스페이스닷원' +
-            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-            '        </div>' +
-            '        <div class="body">' +
-            '            <div class="img">' +
-            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-            '           </div>' +
-            '            <div class="desc">' +
-            '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' +
-            '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
-            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-            '            </div>' +
-            '        </div>' +
-            '    </div>' +
-            '</div>';
-
-        overlay = new kakao.maps.CustomOverlay({
-            content: content,
-            map: map,
-            position: marker.getPosition()
-        });
-        marker_click = true;
-        overlay.setMap(map);
-        kakao.maps.event.removeListener(map, 'click', mapClickHandler);
-    }
-};
-
-// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-kakao.maps.event.addListener(marker, 'click', markerClickHandler);
-
 // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
 // kakao.maps.event.addListener(map, 'idle', function () {
 //     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
@@ -204,7 +159,7 @@ function displayCenterInfo(result, status) {
             var content = '<div class="bAddr clear_fix">' +
                 '<span class="title">주소정보</span>' + detailAddr
                 + '<a class="infowindow_menu" href="https://map.kakao.com/link/to/' + + result[0].address_name + '" target="_blank">길찾기</a>'
-                + '<div class="infowindow_menu" onclick="roadView(' + address_list[0] + address_list[1] + ')">로드뷰</div>'
+                + '<div class="infowindow_menu" onclick="roadView(' + String(address_list[0]) + String(address_list[1]) + ')">로드뷰</div>'
                 + '</div>';
 
             //마커표시
@@ -379,3 +334,85 @@ function shelter_func() {
 function animal_func() {
     return animal_info;
 }
+
+// 커스텀 오버레이를 닫기위해 호출되는 함수입니다 
+function closeOverlay() {
+    overlay.setMap(null);
+    kakao.maps.event.addListener(map, 'click', mapClickHandler);
+    marker_click = false;
+}
+
+// 커스텀 오버레이를 열기위해 호출되는 함수입니다
+function openOverlay(data, shelter_marker) {
+    var address_list = [String(data['pos']['idx_2']) + ',', String(data['pos']['idx_1'])];
+
+    var content = '<div class="wrap">' +
+        '    <div class="info">' +
+        '        <div class="title">' +
+        data['shelter_name'] +
+        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+        '        </div>' +
+        '        <div class="body">' +
+        '            <div class="img">' +
+        '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+        '           </div>' +
+        '            <div class="desc">' +
+        '                <div class="ellipsis">' + data['address'] + '</div>' +
+        '                <div class="jibun ellipsis">연락처: ' + data['shelter_tel'] + '</div>' +
+        '                <div class="menu_box clear_fix">' +
+        '                <div class="elem search"><a href="' + 'https://www.google.com/search?q=' + data['shelter_name'] + '"' + 'target="_blank" id="shelter_link" class="link">검색하기</a></div>' +
+        '                <div class="elem roadview"><a class="link" onclick="roadView(' + address_list[0] + address_list[1] + ')">로드뷰</a></div>' +
+        '                <div class="elem del_marker"><a class="link"">마커삭제</a></div>' +
+        '                </div>' +
+        '            </div>' +
+        '        </div>' +
+        '    </div>' +
+        '</div>';
+
+    $(document).ready(function () {
+        $('.del_marker').click(function () {
+            shelterMarker_json[data['address']].setMap(null);
+            delete shelterMarker_json[data['address']];
+            closeOverlay();
+        });
+    });
+
+    overlay = new kakao.maps.CustomOverlay({
+        content: content,
+        map: map,
+        position: shelter_marker.getPosition()
+    });
+    marker_click = true;
+    overlay.setMap(map);
+    kakao.maps.event.removeListener(map, 'click', mapClickHandler);
+}
+
+//보호시설 마커를 지도에 표시
+window.addEventListener('message', function (event) {
+    if (event.srcElement.location.href == window.location.href) {
+        if (shelterMarker_json.hasOwnProperty(event.data['address']) != true) {
+
+            var shelter_marker = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(event.data['pos']['idx_1'], event.data['pos']['idx_2']), // 마커가 표시될 위치입니다,
+                image: markerImage, // 마커이미지 설정 
+            })
+
+            shelter_marker.setMap(map);
+            shelterMarker_json[event.data['address']] = shelter_marker;
+
+            // 마커를 클릭했을 때 오버레이를 표시하는 클릭핸들러 
+            var markerClickHandler = function () {
+                if (marker_click) {
+                    closeOverlay();
+                } else {
+                    openOverlay(event.data, shelter_marker);
+                }
+            };
+            // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+            kakao.maps.event.addListener(shelter_marker, 'click', markerClickHandler);
+            // openOverlay(event.data, shelter_marker);
+        }
+        panTo(event.data['pos']['idx_1'], event.data['pos']['idx_2']);
+    }
+});
+

@@ -3,7 +3,7 @@ from flask import render_template, jsonify, request
 from rest_client.controller import BluePrint
 from rest_server.resource_Animal import Animal_Resource
 from rest_server.resource_Shelter import resource_Shelter
-
+from rest_server.resource_Map import Geocode_Resource
 
 application = Flask(__name__)
 application.register_blueprint(BluePrint, url_prefix='/bp')
@@ -21,6 +21,13 @@ def search():
             request.get_json()['address'])
 
         return jsonify(shelter_info=shelter_info, animal_info=animal_info), 200
+
+
+# 입력받은 주소의 좌표값얻기
+@application.route('/location', methods=['POST', 'GET'])
+def location():
+    if request.method == 'POST':
+        return jsonify(address=request.get_json()['address'], pos=Geocode_Resource().get(request.get_json()['address'])), 200
 
 
 @application.route('/')
