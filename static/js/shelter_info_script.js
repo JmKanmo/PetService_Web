@@ -25,6 +25,7 @@ function marker_function() {
     json_data['shelter_tel'] = shelter_info['tel'];
     json_data['offer'] = shelter_info['memberNm'];
     json_data['offer_tel'] = shelter_info['htel'];
+    json_data['type'] = 'Shelter';
     window.opener.postMessage(json_data, "http://127.0.0.1:5000/bp/maps");
 }
 

@@ -234,7 +234,7 @@ function add_shelter_list(shelter_list) {
         li_list[i].style.borderBottom = "1px solid #d1d1d1";
         li_list[i].style.cursor = "pointer";
         li_list[i].className = 'shelter'
-        li_list[i].appendChild(document.createTextNode(shelter_list[i]['orgNm'] + " ☎: " + shelter_list[i]['tel'] + " / " + shelter_list[i]['memberNm']));
+        li_list[i].appendChild(document.createTextNode(shelter_list[i]['orgNm'] + " ☎: " + (shelter_list[i]['tel'] == '비공개' || shelter_list[i]['memberNm'] == '비공개' ? ' → 인터넷검색, 유기동물정보 확인' : shelter_list[i]['tel'] + " / " + shelter_list[i]['memberNm'])));
         ul.appendChild(li_list[i]);
     }
 
@@ -392,9 +392,16 @@ window.addEventListener('message', function (event) {
     if (event.srcElement.location.href == window.location.href) {
         if (shelterMarker_json.hasOwnProperty(event.data['address']) != true) {
 
+            if (event.data['type'] == 'Animal') {
+                imageSrc = '../static/images/dog_icon.png';
+                imageSize = new kakao.maps.Size(35, 40);
+            } else {
+                imageSrc = '../static/images/pointer.png';
+            }
+
             var shelter_marker = new kakao.maps.Marker({
                 position: new kakao.maps.LatLng(event.data['pos']['idx_1'], event.data['pos']['idx_2']), // 마커가 표시될 위치입니다,
-                image: markerImage, // 마커이미지 설정 
+                image: markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption), // 마커이미지 설정 
             })
 
             shelter_marker.setMap(map);
@@ -415,4 +422,3 @@ window.addEventListener('message', function (event) {
         panTo(event.data['pos']['idx_1'], event.data['pos']['idx_2']);
     }
 });
-
