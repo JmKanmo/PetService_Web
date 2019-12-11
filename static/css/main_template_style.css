@@ -50,6 +50,32 @@
     top: -4px;
 }
 
+.nav-item .utilize {
+    margin: 0 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.up_down_Btn {
+    position: absolute;
+    right: 89px;
+    width: 25px;
+    height: 25px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.up_down_Btn img {
+    width: 100%;
+    height: 100%;
+}
+
+.Apiuse_list {
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+
 .collapse.navbar-collapse.justify-content-end {
     border-bottom: 1px solid #d1d1d1;
 }

@@ -35,6 +35,8 @@
     <!-- Material Kit CSS -->
     <!-- <link href="assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" /> -->
     <link rel="shortcut icon" href="#" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main_template_script.js') }}"></script>
 </head>
 
 <body>
@@ -60,20 +62,33 @@
                         </a>
                     </li>
 
-                    <li class="nav-item {% if nav_menu == 'dashboard' %}active{% endif%}">
-                        <a class="nav-link" href="/bp/dashboard">
-                            <i class="material-icons">search</i>
-                            <p>유기동물 조회</p>
+                    <li class="nav-item" style="position: relative;">
+                        <a class="nav-link utilize" style="margin-right: 115px; padding-right: 0;"
+                            onmouseover="utilize_over()" onmouseout="utilize_out()">
+                            <i class="material-icons">mood</i>
+                            <p>API 활용</p>
                         </a>
-                    </li>
 
-                    <li class="nav-item {% if nav_menu == 'map' %}active{% endif%}">
-                        <a class="nav-link" href="/bp/maps">
-                            <i class="material-icons">directions</i>
-                            <p>보호시설 검색</p>
-                        </a>
-                    </li>
+                        <div class="up_down_Btn" onclick="up_down_func()" title="활요예시메뉴가 표시됩니다.">
+                            <img id="up_down_img" src="../static/images/up-arrow.png" alt="화살표버튼↑">
+                        </div>
 
+                        <ul class="Apiuse_list" id="Apiuse_list">
+                            <li class="nav-item {% if nav_menu == 'dashboard' %}active{% endif%}">
+                                <a class="nav-link" href="/bp/dashboard">
+                                    <i class="material-icons">search</i>
+                                    <p>유기동물 조회</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item {% if nav_menu == 'map' %}active{% endif%}">
+                                <a class="nav-link" href="/bp/maps">
+                                    <i class="material-icons">directions</i>
+                                    <p>보호시설 검색</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- your sidebar here -->
                 </ul>
             </div>
