@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+.clear_fix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+}
+
+.wrap {
+    padding-top: 20px;
+}
+
+.wrap .main_title {
+    text-align: center;
+    border-bottom: 1px solid #d1d1d1;
+    font-weight: bold;
+    font-size: 35px;
+    color: palevioletred;
+    padding-bottom: 20px;
+}
+
+.api_list {
+    font-weight: bold;
+    list-style: disc;
+    padding: 35px 0 35px 100px;
+}
+
+.api_list .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.animal_api .description_list {
+    list-style: decimal;
+    margin-left: 30px;
+    font-size: 18px;
+}
+
+.animal_api .description_list .description {
+    margin-bottom: 45px;
+    margin-top: 40px;
+    color: #000;
+}
+
+.json_description {
+    margin: 30px 20px 20px 20px;
+    font-size: 16px;
+    list-style: square;
+}
+
+.json_description li .json_img {
+    margin-top: 20px;
+    border: 1px solid #d1d1d1;
+}
+
+.ra_list {
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.ra_list li {
+    margin-top: 25px;
+}
+
+.img_box {
+    background: url(../images/animal_json_img.PNG)no-repeat;
+    background-size: contain;
+}

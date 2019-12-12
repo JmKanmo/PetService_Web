@@ -55,9 +55,16 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
+                    <li class="nav-item {% if nav_menu == 'guide' %}active{% endif%}">
+                        <a class="nav-link" href="/bp/guide">
+                            <i class="material-icons">help_outline</i>
+                            <p>API 설명</p>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#0">
-                            <i class="material-icons">mood</i>
+                            <i class="material-icons">play_arrow</i>
                             <p>API 실행</p>
                         </a>
                     </li>
@@ -69,7 +76,7 @@
                             <p>API 활용</p>
                         </a>
 
-                        <div class="up_down_Btn" onclick="up_down_func()" title="활요예시메뉴가 표시됩니다.">
+                        <div class="up_down_Btn" onclick="up_down_func()" title="API활용메뉴가 표시됩니다.">
                             <img id="up_down_img" src="../static/images/up-arrow.png" alt="화살표버튼↑">
                         </div>
 

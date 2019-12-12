@@ -1,0 +1,99 @@
+{% extends 'main_template.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/guide_template_style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <title>웹서비스컴퓨팅</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1 class="main_title">사용 API</h1>
+        <ul class="api_list">
+            <li class="api_wrap">
+                <div class="animal_api">
+                    <h2 class="title">유기동물 정보 조회 서비스</h2>
+                    <ol class="description_list">
+                        <li class="description">
+                            시도,시군구 조회 오퍼레이션
+
+                            <ul class="json_description">
+                                <li>
+                                    유기동물보호소가 위치한 전국단위 시,도,군 정보를 json형태의 데이터로 반환
+                                    <ul class="ra_list">
+                                        <li>요청메시지: 없음</li>
+                                        <li>응답메시지: resultMsg:결과메시지, orgCd:시도코드, orgdownNm:시도명</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top: 40px;">
+                                    <p>JSON 데이터예시</p>
+                                    <img class="json_img" src="../static/images/sido_json_img.PNG" alt="" class="image">
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="description" style="padding-top: 30px;">
+                            유기동물상세정보 조회 오퍼레이션
+
+                            <ul class="json_description">
+                                <li>
+                                    유기동물보호소가 위치한 전국단위 시,도,군 정보를 json형태의 데이터로 반환
+                                    <ul class="ra_list">
+                                        <li>요청메시지: bende:검색시작일, endde:검색종료일, upkind(축종코드), uprcd:시도코드,
+                                            orgcd:시군구코드, state:공고상태, neuter_yn:중성화여부
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top: 40px;">
+                                    <p>JSON 데이터예시</p>
+                                    <img class="json_img" src="../static/images/animal_json_img.PNG" alt=""
+                                        class="image">
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="description" style="padding-top: 30px;">
+                            유기동물보호 및 등록대행업체 정보조회 오퍼레이션
+                            <ul class="json_description">
+                                <li>
+                                    요청한 정보에 맞는 유기동물보호 및 등록대행업체집합을 json리스트형태의 데이터로 반환
+                                    <ul class="ra_list">
+                                        <li>요청메시지: addr: 검색주소, orgNm:시설명, pageNo: 페이지 번호, numOfRows: 한 페이지 결과 수</li>
+                                        <li>응답메시지: resultMsg:결과메시지, addr:주소, addrDtl:상세주소, htel:핸드폰번호, memberNm:대표자명,
+                                            email:이메일</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top: 40px;">
+                                    <p>JSON 데이터예시</p>
+                                    <img class="json_img" src="../static/images/shlter_agency_img.PNG" alt=""
+                                        class="image">
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </li>
+
+            <li class="map_wrap" style="margin-top:90px;">
+                <div class="map_api">
+                        <h2 class="title">Google Geocoding API</h2>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

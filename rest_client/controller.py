@@ -8,6 +8,12 @@ from rest_server.resource_Animal import Animal_Resource
 import random
 
 
+# 가이드템플릿 표시
+@BluePrint.route('/guide')
+def guide():
+    return render_template('guide_template.html', nav_menu="guide")
+
+
 # 지도검색시스템 관리영역
 
 @BluePrint.route('/maps', methods=['POST', 'GET'])
