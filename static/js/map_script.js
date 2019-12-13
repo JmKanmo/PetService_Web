@@ -320,7 +320,7 @@ function add_animal_list(animal_list) {
         $('.animal').click(function () {
             var url = '/bp/animal_info';
             var name = "유기동물상세정보";
-            var option = "width = 500, height = 400, top = 100, left = 350, location = no";
+            var option = "width = 500, height = 500, top = 100, left = 350, location = no";
             window.open(url, name, option);
             animal_info = animal_list[$('.animal').index(this)];
         });

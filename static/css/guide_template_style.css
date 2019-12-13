@@ -14,10 +14,6 @@
     clip: rect(0 0 0 0);
 }
 
-.wrap {
-    padding-top: 20px;
-}
-
 .wrap .main_title {
     text-align: center;
     border-bottom: 1px solid #d1d1d1;
@@ -35,16 +31,16 @@
 
 .api_list .title {
     font-size: 25px;
-    margin-bottom: 20px;
+    margin: 30px 0 20px 0;
 }
 
-.animal_api .description_list {
+.description_list {
     list-style: decimal;
     margin-left: 30px;
     font-size: 18px;
 }
 
-.animal_api .description_list .description {
+.description_list .description {
     margin-bottom: 45px;
     margin-top: 40px;
     color: #000;
@@ -64,6 +60,8 @@
 .ra_list {
     margin-bottom: 30px;
     font-size: 14px;
+    list-style: circle;
+    padding-left: 30px;
 }
 
 .ra_list li {

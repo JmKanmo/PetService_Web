@@ -19,9 +19,9 @@
 
 <body>
     <div class="wrap">
-        <h1 class="main_title">사용 API</h1>
+        <h1 class="main_title">사용 API 목록</h1>
         <ul class="api_list">
-            <li class="api_wrap">
+            <li class="animal_wrap">
                 <div class="animal_api">
                     <h2 class="title">유기동물 정보 조회 서비스</h2>
                     <ol class="description_list">
@@ -37,7 +37,7 @@
                                     </ul>
                                 </li>
                                 <li style="margin-top: 40px;">
-                                    <p>JSON 데이터예시</p>
+                                    <p>JSON 데이터예시: 전국에 있는 보호시설,대행업체 정보</p>
                                     <img class="json_img" src="../static/images/sido_json_img.PNG" alt="" class="image">
                                 </li>
                             </ul>
@@ -48,7 +48,7 @@
 
                             <ul class="json_description">
                                 <li>
-                                    유기동물보호소가 위치한 전국단위 시,도,군 정보를 json형태의 데이터로 반환
+                                    요청조건에 맞는 유기동물집합의 상세정보를 json리스트형태의 데이터로 반환
                                     <ul class="ra_list">
                                         <li>요청메시지: bende:검색시작일, endde:검색종료일, upkind(축종코드), uprcd:시도코드,
                                             orgcd:시군구코드, state:공고상태, neuter_yn:중성화여부
@@ -56,7 +56,7 @@
                                     </ul>
                                 </li>
                                 <li style="margin-top: 40px;">
-                                    <p>JSON 데이터예시</p>
+                                    <p>JSON 데이터예시: 경상북도 경주에 위치한 유기동물中</p>
                                     <img class="json_img" src="../static/images/animal_json_img.PNG" alt=""
                                         class="image">
                                 </li>
@@ -75,7 +75,7 @@
                                     </ul>
                                 </li>
                                 <li style="margin-top: 40px;">
-                                    <p>JSON 데이터예시</p>
+                                    <p>JSON 데이터예시: 천안시에 위치한 유기동물 보호 및 등록대행업체中 </p>
                                     <img class="json_img" src="../static/images/shlter_agency_img.PNG" alt=""
                                         class="image">
                                 </li>
@@ -85,9 +85,53 @@
                 </div>
             </li>
 
-            <li class="map_wrap" style="margin-top:90px;">
+            <li class="geocode_wrap" style="margin-top:90px;">
                 <div class="map_api">
-                        <h2 class="title">Google Geocoding API</h2>
+                    <h2 class="title">Google Geocoding API</h2>
+                    <ol class="description_list">
+                        <li class="description">
+                            Geocoding 정보조회 오퍼레이션
+                            <ul class="json_description">
+                                <li>
+                                    검색한 주소의 좌표,경도,위도를 포함한 여러 정보를 json리스트형태의 데이터로 반환
+                                    <ul class="ra_list">
+                                        <li>요청메시지: address:주소정보</li>
+                                        <li>응답메시지: address components: 결과주소정보, formatted_address: 전체 주소정보,
+                                            geometry: 위도,경도,좌표정보, status: 응답여부 </li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top: 40px;">
+                                    <p>JSON 데이터예시: "한국기술교육대학교" 검색결과</p>
+                                    <img class="json_img" src="../static/images/geocode_json_img.PNG" alt=""
+                                        class="image">
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </li>
+
+            <li class="kakao_wrap" style="margin-top: 90px;">
+                <div class="kakao_api">
+                    <h2 class="title">Kakao Maps API</h2>
+                    <ol class="description_list">
+                        <li class="description">
+                            Kakao Map 생성
+                            <ul class="json_description">
+                                <li>
+                                    지도를 생성한 뒤, 마커로 표시한 지역으로 이동,가리킨다.
+                                    <ul class="ra_list">
+                                        <li>요청메시지: address: 주소정보</li>
+                                        <li>응답메시지: result: 지도정보 </li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top: 40px;">
+                                    <p>지도이미지: "강남구" 검색결과</p>
+                                    <img class="json_img" src="../static/images/Kakao_api_img.PNG" alt="" class="image">
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
                 </div>
             </li>
         </ul>

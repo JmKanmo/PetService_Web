@@ -15,16 +15,27 @@
     text-align: center;
 }
 
+.wrap {
+    padding-bottom: 30px;
+}
+
 .info_wrap {
     width: 450px;
     height: auto;
     border: 1px solid black;
-    border-bottom: none;
     margin: 0 auto;
 }
 
 .info_wrap .info_box {
-    border-bottom: 1px solid#607d8bd9;
+    border: 1px solid #d1d1d1;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    overflow: hidden;
+}
+
+.info_wrap .info_final_box {
+    border: none;
     overflow: hidden;
 }
 

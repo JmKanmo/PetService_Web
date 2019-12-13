@@ -21,14 +21,6 @@ def map():
     address = "음성군 대소면"  # 초기주소
 
     if request.method == 'POST':
-
-        if not request.form['address']:
-            pos = Geocode_Resource().get(address)
-
-            return render_template(
-                'map_template.html', pos_y=pos['idx_2'], pos_x=pos['idx_1'], nav_menu="map"
-            )
-
         address = request.form['address']
 
     pos = Geocode_Resource().get(address)
