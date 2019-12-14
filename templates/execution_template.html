@@ -1,0 +1,107 @@
+{% extends 'main_template.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/execution_template_style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/execution_template_script.js') }}"></script>
+    <title>웹서비스컴퓨팅</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1 class="main_title">API 시뮬레이션</h1>
+
+        <ol class="guide_box">
+            <h2 class="guide_title">실행가이드</h2>
+            <li>유기동물탐색에 필요한 여러 조건을 입력합니다.</li>
+            <li>검색버튼을 누르면 json데이터형식의 유기동물정보가 출력됩니다.</li>
+        </ol>
+
+        <form action="http://127.0.0.1:5000/bp/execute" class="search_form" method="POST">
+            <div class="date_form">
+                <label for="start_day" class="start_day">검색시작일</label>
+                <input type='date' id="start_day" name="start_day" placeholder=" YYYY-MM-DD" />
+                <label for="end_day" class="end_day">검색종료일</label>
+                <input type='date' id="end_day" name="end_day" placeholder=" YYYY-MM-DD" />
+            </div>
+
+            <div class="condition_form clear_fix">
+                <label style="display: block;" for="kinds">종류</label>
+                <div class="kinds_box">
+                    <select class="kinds" name="animal_kinds" id="kinds">
+                        <option value="417000">개</option>
+                        <option value="422400">고양이</option>
+                        <option value="429900">기타</option>
+                    </select>
+                </div>
+
+                <label class="newtralization_label" for="newtralization">중성화여부</label>
+                <div class="kinds_box">
+                    <select class="kinds" id="newtralization" name="newtralization_kinds">
+                        <option value="U">-선택-</option>
+                        <option value="Y">예</option>
+                        <option value="N">아니오</option>
+                    </select>
+                </div>
+
+                <label class="location_label" for="location">지역</label>
+                <input type="text" id="location" class="location_input" name="location">
+            </div>
+            <input class="search_btn" type="submit" value="검색" title="조건에 맞는 동물을 검색합니다.">
+        </form>
+
+        <ol class="animal_list clear_fix">
+            {% if animal_list is defined %}
+            <script>
+                var info_arr = new Array();
+                var idx = 0;
+            </script>
+            {%for animal in animal_list%}
+            {%if ((animal['processState']=='보호중') or (animal['processState']=='공고중')):%}
+            <li>
+                <div id="profile{{loop.index}}" class="animal_profile clear_fix">
+                    <p>{</p>
+                    {% for key, value in animal.items() %}
+                    <p>'{{key}}' : {{value}} </p>
+                    {% endfor %}
+                    <p>}</p>
+                </div>
+                <script>
+                    info_arr[idx] = JSON.parse('{{animal|tojson}}');
+                </script>
+            </li>
+            {%endif%}
+            <script>
+                idx = idx + 1;
+            </script>
+            {% endfor %}
+            {% else %}
+            <!-- Small modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+                data-target=".bd-example-modal-sm">검색실패</button>
+
+            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        조건에맞는 검색내용이 없습니다.
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </ol>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

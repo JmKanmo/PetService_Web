@@ -22,7 +22,7 @@ class Geocode_Resource:
 
     def get(self, address):
         URL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + \
-            address+"&key=AIzaSyAPe83VKDQLfw_5kVvTYSvM0j0Z2HX8ff0"
+            address+"&key=AIzaSyAPe83VKDQLfw_5kVvTYSvM0j0Z2HX8ff0&language=ko"
         result = requests.get(URL).json()
 
         if result['status'] == 'OK':
@@ -31,3 +31,11 @@ class Geocode_Resource:
 
         else:
             return None
+
+    def getFormattedAddress(self, address):
+        URL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + \
+            address+"&key=AIzaSyAPe83VKDQLfw_5kVvTYSvM0j0Z2HX8ff0&language=ko"
+        result = requests.get(URL).json()
+
+        if result['status'] == 'OK':
+            return result['results'][0]['formatted_address']

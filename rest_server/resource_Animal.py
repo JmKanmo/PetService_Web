@@ -9,7 +9,7 @@ class Location_Resource:
     def __init__(self):
         pass
 
-    def get_sidocode(self, address):
+    def get_sidolist(self):
         sido_result = requests.get(
             'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/sido?ServiceKey='+API_KEY)
         dict_type = xmltodict.parse(sido_result.content)
@@ -17,9 +17,15 @@ class Location_Resource:
         dict2_type = json.loads(json_type)
         body = dict2_type['response']['body']
         items = body['items']
-        return items['item']
+        return [] if items == None else items['item']
 
-    def get_sigungucode(self, uprCd):
+    def get_sidocode(self, address):
+        for json_data in self.get_sidolist():
+            if json_data['orgdownNm'] == address:
+                return json_data['orgCd']
+        return ''
+
+    def get_sigungulist(self, uprCd):
         sigungu_result = requests.get(
             'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/sigungu?upr_cd='+uprCd+'&ServiceKey='+API_KEY)
         dict_type = xmltodict.parse(sigungu_result.content)
@@ -27,7 +33,13 @@ class Location_Resource:
         dict2_type = json.loads(json_type)
         body = dict2_type['response']['body']
         items = body['items']
-        return items['item']
+        return [] if items == None else items['item']
+
+    def get_sigungucode(self, uprCd, address):
+        for sigungu in self.get_sigungulist(uprCd):
+            if sigungu['orgdownNm'] == address:
+                return sigungu['orgCd']
+        return ''
 
 
 class Animal_Resource:
@@ -76,18 +88,12 @@ class Animal_Resource:
     def get_NearAnimal(self, address):
         parsed_address = address.split(' ')  # 파싱주소([0]-시도, [1]-시군구)
         animal_info = []
-        # animal_sidoinfo = []
         animal_sigunguinfo = []
 
         try:
-            for json_data in Location_Resource().get_sidocode(parsed_address):
+            for json_data in Location_Resource().get_sidolist():
                 if json_data['orgdownNm'] == parsed_address[0]:
-                    # for animal in self.get_searchAnimal(
-                    #         '20191201', '20191204', '', json_data['orgCd'], '', ''):
-                    #     if animal['processState'] == '보호중' or animal['processState'] == '공고중':
-                    #         animal_sidoinfo.append(animal)
-
-                    for sigungu in Location_Resource().get_sigungucode(json_data['orgCd']):
+                    for sigungu in Location_Resource().get_sigungulist(json_data['orgCd']):
                         if sigungu['orgdownNm'] == parsed_address[1]:
                             for animal in self.get_searchAnimal(
                                     '20190101', '20191204', '', json_data['orgCd'], sigungu['orgCd'], ''):
@@ -97,7 +103,6 @@ class Animal_Resource:
                     break
 
             animal_info = animal_sigunguinfo
-
             return animal_info
         except:
             return []

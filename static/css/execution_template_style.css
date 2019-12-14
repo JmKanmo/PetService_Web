@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+html,
+body,
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.clear_fix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+}
+
+.wrap .main_title {
+    text-align: center;
+    border-bottom: 1px solid #d1d1d1;
+    font-weight: bold;
+    font-size: 35px;
+    color: palevioletred;
+    padding-bottom: 20px;
+}
+
+.wrap .guide_title {
+    position: absolute;
+    top: -55px;
+    left: 0px;
+    font-size: 22px;
+}
+
+.wrap .guide_box {
+    width: 660px;
+    margin: 90px auto 40px;
+    text-align: left;
+    list-style: decimal;
+    padding-left: 15px;
+    position: relative;
+}
+
+.guide_box li:nth-child(n+1) {
+    margin-top: 25px;
+}
+
+.search_form {
+    position: relative;
+    padding-bottom: 36px;
+    width: 660px;
+    border: 1px solid #acacac;
+    margin: 0 auto;
+    background: rgba(245, 255, 149, 0.29);
+}
+
+.search_form .date_form {
+    margin-top: 20px;
+    padding: 0 0 5px 15px;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.search_form input[type="date"] {
+    border-style: none;
+    border: 1px solid #000;
+}
+
+.search_form label {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.search_form label {
+    padding-right: 5px;
+}
+
+.search_form .end_day {
+    margin-left: 15px;
+}
+
+.search_form .condition_form {
+    margin-top: 20px;
+    padding: 0 0 10px 15px;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.condition_form label {
+    position: relative;
+    float: left;
+    padding-right: 4px;
+    top: 10px;
+}
+
+.condition_form .newtralization_label {
+    margin-left: 15px;
+}
+
+.condition_form .location_label {
+    margin-left: 15px;
+}
+
+.condition_form .location_input {
+    width: 240px;
+    height: 35px;
+}
+
+.search_form .kinds_box {
+    float: left;
+    position: relative;
+    width: 110px;
+    height: 38px;
+    border: 1px solid #ddd;
+    line-height: 38px;
+}
+
+.kinds_box .kinds {
+    width: 100%;
+    height: 100%;
+    border: 0 none;
+    font-size: 16px;
+    padding: 0 0 0 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.kinds_box::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 4px;
+    margin: auto;
+    background: url(../images/select.png)no-repeat;
+    width: 13px;
+    height: 7px;
+    content: "";
+}
+
+.search_form .search_btn {
+    border: 1px solid #08a600;
+    background: #4ec53d;
+    font-size: 16px;
+    color: #fff;
+    width: 70px;
+    height: 35px;
+    position: absolute;
+    bottom: 0;
+}
+
+.animal_list {
+    margin: 50px 0 0 -15px;
+}
+
+.animal_list li {
+    float: left;
+    margin-bottom: 30px;
+}
+
+.animal_list li {
+    margin-left: 50px;
+}
+
+.animal_list .animal_profile {
+    display: block;
+    cursor: pointer;
+    padding: 15px 0 25px 15px;
+    border: 1px solid #e4e4e4;
+    color: #000;
+    font-size: 14px;
+    max-height: 395.6px;
+    max-width: 500px;
+    overflow-y: auto;
+    overflow-x: auto;
+}

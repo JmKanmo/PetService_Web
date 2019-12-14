@@ -23,7 +23,7 @@
         <ul class="api_list">
             <li class="animal_wrap">
                 <div class="animal_api">
-                    <h2 class="title">유기동물 정보 조회 서비스</h2>
+                    <h2 class="title">유기동물 정보 조회 서비스 API</h2>
                     <ol class="description_list">
                         <li class="description">
                             시도,시군구 조회 오퍼레이션
@@ -52,6 +52,10 @@
                                     <ul class="ra_list">
                                         <li>요청메시지: bende:검색시작일, endde:검색종료일, upkind(축종코드), uprcd:시도코드,
                                             orgcd:시군구코드, state:공고상태, neuter_yn:중성화여부
+                                        </li>
+
+                                        <li>
+                                            응답메시지: ↓↓이미지 참조
                                         </li>
                                     </ul>
                                 </li>
@@ -119,15 +123,21 @@
                             Kakao Map 생성
                             <ul class="json_description">
                                 <li>
-                                    지도를 생성한 뒤, 마커로 표시한 지역으로 이동,가리킨다.
+                                    생성된 지도에서 마커로 표시한 지점으로 이동, 좌표,주소정보를 json형식의 데이터로 반환
                                     <ul class="ra_list">
-                                        <li>요청메시지: address: 주소정보</li>
-                                        <li>응답메시지: result: 지도정보 </li>
+                                        <li>요청메시지: 클릭지점 좌표(x,y)</li>
+                                        <li>응답메시지: address:주소정보, length:길이, __proto__:객체정보</li>
                                     </ul>
                                 </li>
                                 <li style="margin-top: 40px;">
-                                    <p>지도이미지: "강남구" 검색결과</p>
+                                    <p>지도이미지: "강남구 삼성동" 검색결과</p>
                                     <img class="json_img" src="../static/images/Kakao_api_img.PNG" alt="" class="image">
+                                </li>
+
+                                <li style="margin-top: 40px;">
+                                    <p>좌표,주소정보: "강남구 삼성동" 검색결과</p>
+                                    <img class="json_img" src="../static/images/kakao_map_json.PNG" alt=""
+                                        class="image">
                                 </li>
                             </ul>
                         </li>

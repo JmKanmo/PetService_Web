@@ -4,14 +4,8 @@ import requests
 from flask import request
 from rest_server.resource_Map import KakaoMap_Resource, Geocode_Resource
 from rest_client.blue_print import BluePrint
-from rest_server.resource_Animal import Animal_Resource
+from rest_server.resource_Animal import Animal_Resource, Location_Resource
 import random
-
-
-# 가이드템플릿 표시
-@BluePrint.route('/guide')
-def guide():
-    return render_template('guide_template.html', nav_menu="guide")
 
 
 # 지도검색시스템 관리영역
@@ -75,6 +69,47 @@ def dashboard():
         return render_template(
             'dashboard.html', nav_menu="dashboard", animal_list=list_param
         )
+
+# 실행템플릿 표시
+@BluePrint.route('/execute', methods=['POST', 'GET'])
+def execute():
+    if request.method == 'POST':
+        start_day = request.form['start_day'].replace("-", "")
+        end_day = request.form['end_day'].replace("-", "")
+        animal_kinds = request.form['animal_kinds']
+        newtralization = request.form['newtralization_kinds']
+        geocode = Geocode_Resource().getFormattedAddress(
+            request.form['location'])
+        location = [] if geocode == None else geocode.split(' ')
+        sido_code = '' if len(
+            location) < 2 else Location_Resource().get_sidocode(location[1])
+        sigungu_code = '' if len(location) < 3 else Location_Resource().get_sigungucode(
+            sido_code, location[2])
+        search_list = Animal_Resource().get_searchAnimal(
+            start_day, end_day, animal_kinds, sido_code, sigungu_code, newtralization)
+
+        list_param = []
+        if search_list != None:
+            if len(search_list) < 15:
+                print(search_list)
+                for item in search_list:
+                    list_param.append(item)
+            else:
+                if type(search_list).__name__ != 'list':
+                    list_param.append([search_list])
+                else:
+                    for cnt in range(0, 15):
+                        list_param.append(search_list[cnt])
+
+        return render_template('execution_template.html', nav_menu="execute", animal_list=list_param)
+
+    return render_template('execution_template.html', nav_menu="execute", animal_list=[])
+
+
+# 가이드템플릿 표시
+@BluePrint.route('/guide')
+def guide():
+    return render_template('guide_template.html', nav_menu="guide")
 
 
 # 동물상세정보팝업창호출

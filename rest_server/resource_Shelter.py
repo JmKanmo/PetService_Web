@@ -31,16 +31,14 @@ class resource_Shelter:
 
     def get_NearShelter(self, address):
         parsed_address = address.split(' ')
-
-        # sido_shelter = self.get_searchShelter(parsed_address[0])
         sigungu_agency = self.get_searchAgency(
             parsed_address[0]+' '+parsed_address[1])
 
         sigungu_shelter = []
 
-        for sido_body in Location_Resource().get_sidocode(parsed_address):
+        for sido_body in Location_Resource().get_sidolist():
             if sido_body['orgdownNm'] == parsed_address[0]:
-                for sigungu_body in Location_Resource().get_sigungucode(sido_body['orgCd']):
+                for sigungu_body in Location_Resource().get_sigungulist(sido_body['orgCd']):
                     if sigungu_body['orgdownNm'] == parsed_address[1]:
                         URL = 'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/shelter?upr_cd=' + \
                             sido_body['orgCd']+'&org_cd=' + \
