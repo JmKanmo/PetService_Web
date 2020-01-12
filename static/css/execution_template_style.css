@@ -40,7 +40,6 @@ ol {
 }
 
 .wrap .guide_box {
-    width: 660px;
     margin: 90px auto 40px;
     text-align: left;
     list-style: decimal;
@@ -55,7 +54,6 @@ ol {
 .search_form {
     position: relative;
     padding-bottom: 36px;
-    width: 660px;
     border: 1px solid #acacac;
     margin: 0 auto;
     background: rgba(245, 255, 149, 0.29);
@@ -156,16 +154,11 @@ ol {
 }
 
 .animal_list {
-    margin: 50px 0 0 -15px;
+    margin-top: 50px;
 }
 
 .animal_list li {
-    float: left;
-    margin-bottom: 30px;
-}
-
-.animal_list li {
-    margin-left: 50px;
+    margin: 0 auto 30px;
 }
 
 .animal_list .animal_profile {

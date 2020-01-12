@@ -15,9 +15,9 @@ def map():
     address = "음성군 대소면"  # 초기주소
 
     if request.method == 'POST':
-        address = request.form['address']
+        address = request.form['address']  # 사용자가 입력한 주소값
 
-    pos = Geocode_Resource().get(address)
+    pos = Geocode_Resource().get(address)  # 주소값을 바탕으로 geocode정보 반환 및 저장
 
     if pos == None:
         pos = Geocode_Resource().get('음성군 대소면')
@@ -30,7 +30,8 @@ def map():
 # 유기동물정보조회 코드영역
 animal_list = Animal_Resource().get_searchAnimal('', '', '', '', '', '')
 
-
+# 사용자가 입력한 여러조건 값을 토대로 유기동물데이터를 요청
+#  반환된 search_list에서 데이터파싱과정을 거쳐 다시 사용자에게 전달
 @BluePrint.route('/dashboard', methods=['POST', 'GET'])
 def dashboard():
     if request.method == 'POST':
@@ -70,7 +71,9 @@ def dashboard():
             'dashboard.html', nav_menu="dashboard", animal_list=list_param
         )
 
+
 # 실행템플릿 표시
+# 위 함수와 내용이 유사
 @BluePrint.route('/execute', methods=['POST', 'GET'])
 def execute():
     if request.method == 'POST':

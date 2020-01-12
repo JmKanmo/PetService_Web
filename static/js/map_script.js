@@ -45,7 +45,7 @@ function communicate_info() {
         contentType: 'application/json',
         method: 'POST',
         data: JSON.stringify({
-            address: cur_position
+            address: cur_position //지정한 좌표값
         }),
         error: function (res) {
             alert('탐색실패');

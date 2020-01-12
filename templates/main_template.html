@@ -21,7 +21,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -102,29 +102,20 @@
         </div>
         <div class="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <!-- <a class="navbar-brand" href="#pablo">Dashboard</a> -->
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <i class="material-icons">notifications</i> 알림
-                                </a>
-                            </li>
-                            <!-- your navbar here -->
-                        </ul>
-                    </div>
-                </div>
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top menu_nav">
+                <ul class="menu_list clear_fix">
+                    <li class="menu_guide {% if nav_menu == 'guide' %}active{% endif%}">
+                        안녕
+                    </li>
+
+                    <li class="menu_run nav {% if nav_menu == 'execute' %}active{% endif%}">
+                        반갑다
+                    </li>
+
+                    <li class="menu_utilize" style="position: relative;">
+                        난 탐정이지
+                    </li>
+                </ul>
             </nav>
             <!-- End Navbar -->
             <div class="content">

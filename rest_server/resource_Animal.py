@@ -5,10 +5,13 @@ import json
 API_KEY = "ZbgMgKa7yiF%2BH655L2q2bhPmTslw6qWOLQEB2plfkrRtwZPSn4y7V0P%2FXEkSS85j32cYyuDvan4LQSeo0cMuZQ%3D%3D"
 
 
+# 사용자가 요청한 조건에맞는 유기동물조회API의 시군구 데이터를 조회,전달하는  클래스
 class Location_Resource:
     def __init__(self):
         pass
 
+    #전국의 '도시'데이터 를 조회 및
+    # json리스트형태로 변환, 반환하는 함수
     def get_sidolist(self):
         sido_result = requests.get(
             'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/sido?ServiceKey='+API_KEY)
@@ -19,11 +22,15 @@ class Location_Resource:
         items = body['items']
         return [] if items == None else items['item']
 
+    # 인자로 주어진 주소값에 맞는 시도코드데이터를 반환하는 함수
     def get_sidocode(self, address):
         for json_data in self.get_sidolist():
             if json_data['orgdownNm'] == address:
                 return json_data['orgCd']
         return ''
+
+    #전국의 '시군구'데이터 를 조회 및
+    # json리스트형태로 변환, 반환하는 함수
 
     def get_sigungulist(self, uprCd):
         sigungu_result = requests.get(
@@ -35,6 +42,7 @@ class Location_Resource:
         items = body['items']
         return [] if items == None else items['item']
 
+    # 인자로 주어진 주소값에 맞는 시군구코드데이터를 반환하는 함수
     def get_sigungucode(self, uprCd, address):
         for sigungu in self.get_sigungulist(uprCd):
             if sigungu['orgdownNm'] == address:
@@ -42,10 +50,12 @@ class Location_Resource:
         return ''
 
 
+# 사용자가 요청한 조건에맞는 유기동물조회API의 유기동물데이터를 조회,전달하는  클래스
 class Animal_Resource:
     def __init__(self):
         pass
 
+    # 사용자가 요청한 조건(파라미터 리스트)에 맞는 유기동물정보를 조회,반환하는 함수
     def get_searchAnimal(self, *param):
         bgnde = param[0] if param[0] != '' else '20190101'  # 유기날짜(검색시작일)
         endde = param[1] if param[1] != '' else '20191113'  # 유기날짜(검색종료일)
@@ -85,6 +95,7 @@ class Animal_Resource:
         except:
             return []
 
+    # 인자로 전달된 주소의 위치의 근처에분포한 유기동물데이터를 json리스트형태로 변환,반환하는 함수
     def get_NearAnimal(self, address):
         parsed_address = address.split(' ')  # 파싱주소([0]-시도, [1]-시군구)
         animal_info = []

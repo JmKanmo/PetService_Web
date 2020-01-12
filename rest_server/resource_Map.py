@@ -1,9 +1,11 @@
 import requests
 
 
+# 카카오지도API를 이용해 사용자가 원하는 주소정보값을 조회,관리하는 클래스(Geocode API로 대체)
 class KakaoMap_Resource:
     def __init(self):
         pass
+    # 사용자가 요청한 주소에대한 좌표정보값을 조회, json데이터형식으로 반환하는 함수
 
     def get(self, address):
         res = requests.get(
@@ -16,9 +18,11 @@ class KakaoMap_Resource:
         return docs["documents"]
 
 
+# Google Geocode API를 이용해 사용자가 원하는 주소정소값을 조회,관리하는 클래스(적극사용)
 class Geocode_Resource:
     def __init(self):
         pass
+    # 사용자가 요청한 주소에대한 좌표정보값을 조회, json데이터형식으로 반환하는 함수
 
     def get(self, address):
         URL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + \
@@ -31,6 +35,7 @@ class Geocode_Resource:
 
         else:
             return None
+    # 사용자가 요청한 주소(생략된 불명확한 주소)에 대한 정확한 주소값을 반환
 
     def getFormattedAddress(self, address):
         URL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + \
