@@ -26,7 +26,7 @@
 .api_list {
     font-weight: bold;
     list-style: disc;
-    padding: 35px 0 35px 100px;
+    margin-left: 15px;
 }
 
 .api_list .title {
@@ -55,6 +55,7 @@
 .json_description li .json_img {
     margin-top: 20px;
     border: 1px solid #d1d1d1;
+    width: 100%;
 }
 
 .ra_list {

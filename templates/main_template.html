@@ -58,14 +58,14 @@
                     <li class="nav-item {% if nav_menu == 'guide' %}active{% endif%}">
                         <a class="nav-link" href="/bp/guide">
                             <i class="material-icons">help_outline</i>
-                            <p>API 설명</p>
+                            <p>가이드</p>
                         </a>
                     </li>
 
                     <li class="nav-item {% if nav_menu == 'execute' %}active{% endif%}">
                         <a class="nav-link" href="/bp/execute">
                             <i class="material-icons">play_arrow</i>
-                            <p>API 실행</p>
+                            <p>맛보기</p>
                         </a>
                     </li>
 
@@ -73,7 +73,7 @@
                         <a class="nav-link utilize" style="margin-right: 115px; padding-right: 0;"
                             onmouseover="utilize_over()" onmouseout="utilize_out()">
                             <i class="material-icons">mood</i>
-                            <p>API 활용</p>
+                            <p>기능</p>
                         </a>
 
                         <div class="up_down_Btn" onclick="up_down_func()" title="API활용메뉴가 표시됩니다.">
@@ -104,16 +104,39 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top menu_nav">
                 <ul class="menu_list clear_fix">
-                    <li class="menu_guide {% if nav_menu == 'guide' %}active{% endif%}">
-                        안녕
+                    <li class="menu_item {% if nav_menu == 'guide' %}active{% endif%}">
+                        <a href="/bp/guide">가이드</a>
                     </li>
 
-                    <li class="menu_run nav {% if nav_menu == 'execute' %}active{% endif%}">
-                        반갑다
+                    <li class="menu_item nav {% if nav_menu == 'execute' %}active{% endif%}">
+                        <a href="/bp/execute">맛보기</a>
                     </li>
 
-                    <li class="menu_utilize" style="position: relative;">
-                        난 탐정이지
+                    <li class="menu_item" style="position: relative;">
+                        <div class="clear_fix">
+                            <a onmouseover="utilize_over_s()" onmouseout="utilize_out_s()">
+                                기능
+                            </a>
+
+                            <div class="up_down_Btn" onclick="up_down_func_s()" title="API활용메뉴가 표시됩니다.">
+                                <img id="up_down_img_s" src="../static/images/up-arrow.png" alt="화살표버튼↑">
+                            </div>
+                        </div>
+
+                        <ul class="Apiuse_list" id="Apiuse_list_s">
+                            <li class="utilize_list {% if nav_menu == 'dashboard' %}active{% endif%}"
+                                style="margin-bottom: 10px;">
+                                <a href="/bp/dashboard">
+                                    유기동물 조회
+                                </a>
+                            </li>
+
+                            <li class="utilize_list {% if nav_menu == 'map' %}active{% endif%}">
+                                <a href="/bp/maps">
+                                    보호시설 검색
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

@@ -264,7 +264,7 @@ function add_animal_list(animal_list) {
         li_list[i] = document.createElement('li');
         li_list[i].className = 'animal';
         li_list[i].style.cssFloat = "left";
-        li_list[i].style.width = '25%';
+        // li_list[i].style.width = '25%';
         li_list[i].style.height = '222.2px';
         li_list[i].style.maxHeight = '223px';
         li_list[i].style.overflowY = 'auto';

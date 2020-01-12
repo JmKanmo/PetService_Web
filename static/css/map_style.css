@@ -362,7 +362,10 @@
 
 .list_box .shelter_box {
     float: left;
-    width: 40%;
+    width: 50%;
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 .list_box .shelter_list {
@@ -372,12 +375,12 @@
 
 .list_box .animal_box {
     float: left;
-    width: 60%;
+    width: 50%;
 }
 
 .list_box .animal_list {
-    height: 400px;
-    overflow: scroll;
+    height: 360px;
+    overflow-y: scroll;
     border: 1px solid #d1d1d1;
 }
 
@@ -386,4 +389,54 @@
 .marker_div {
     position: absolute;
     top: 0;
+}
+
+.animal {
+    width: 25%;
+}
+
+@media screen and (max-width:720px),
+screen and (max-height:720px) and(orientation:landscape) {
+    .map_wrap {
+        height: 450px;
+    }
+
+    .animal {
+        width: 50%;
+    }
+
+    .hAddr {
+        left: 5px;
+        top: 5px;
+        font-size: 12px;
+    }
+
+    .map_controller_div .map_btn {
+        width: 55px;
+        font-size: 13px;
+        height: 35px;
+        margin-right: 5px;
+    }
+
+    .map_controller_div .skyview_btn {
+        width: 55px;
+        height: 35px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:414px),
+screen and (max-height:414px) and(orientation:landscape) {
+    .map_wrap {
+        height: 380px;
+    }
+
+    .animal {
+        width: auto;
+    }
+
+    .shelter_box h1,
+    .animal_box h1 {
+        font-size: 13px;
+    }
 }

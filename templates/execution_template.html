@@ -28,33 +28,43 @@
 
         <form action="/bp/execute" class="search_form" method="POST">
             <div class="date_form">
-                <label for="start_day" class="start_day">검색시작일</label>
-                <input type='date' id="start_day" name="start_day" placeholder=" YYYY-MM-DD" />
-                <label for="end_day" class="end_day">검색종료일</label>
-                <input type='date' id="end_day" name="end_day" placeholder=" YYYY-MM-DD" />
+                <div style="margin-bottom: 10px;">
+                    <label for="start_day" class="start_day">검색시작일</label>
+                    <input type='date' id="start_day" name="start_day" placeholder=" YYYY-MM-DD" />
+                </div>
+                <div>
+                    <label for="end_day" class="end_day">검색종료일</label>
+                    <input type='date' id="end_day" name="end_day" placeholder=" YYYY-MM-DD" />
+                </div>
             </div>
 
             <div class="condition_form clear_fix">
-                <label style="display: block;" for="kinds">종류</label>
-                <div class="kinds_box">
-                    <select class="kinds" name="animal_kinds" id="kinds">
-                        <option value="417000">개</option>
-                        <option value="422400">고양이</option>
-                        <option value="429900">기타</option>
-                    </select>
+                <div class="clear_fix">
+                    <label style="display: block;" for="kinds">종류</label>
+                    <div class="kinds_box">
+                        <select class="kinds" name="animal_kinds" id="kinds">
+                            <option value="417000">개</option>
+                            <option value="422400">고양이</option>
+                            <option value="429900">기타</option>
+                        </select>
+                    </div>
                 </div>
 
-                <label class="newtralization_label" for="newtralization">중성화여부</label>
-                <div class="kinds_box">
-                    <select class="kinds" id="newtralization" name="newtralization_kinds">
-                        <option value="U">-선택-</option>
-                        <option value="Y">예</option>
-                        <option value="N">아니오</option>
-                    </select>
+                <div class="clear_fix">
+                    <label class="newtralization_label" for="newtralization">중성화여부</label>
+                    <div class="kinds_box">
+                        <select class="kinds" id="newtralization" name="newtralization_kinds">
+                            <option value="U">-선택-</option>
+                            <option value="Y">예</option>
+                            <option value="N">아니오</option>
+                        </select>
+                    </div>
                 </div>
 
-                <label class="location_label" for="location">지역</label>
-                <input type="text" id="location" class="location_input" name="location">
+                <div class="clear_fix">
+                    <label class="location_label" for="location">지역</label>
+                    <input type="text" id="location" class="location_input" name="location">
+                </div>
             </div>
             <input class="search_btn" type="submit" value="검색" title="조건에 맞는 동물을 검색합니다.">
         </form>

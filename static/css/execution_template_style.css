@@ -53,9 +53,9 @@ ol {
 
 .search_form {
     position: relative;
-    padding-bottom: 36px;
+    padding-bottom: 35px;
     border: 1px solid #acacac;
-    margin: 0 auto;
+    width: 70%;
     background: rgba(245, 255, 149, 0.29);
 }
 
@@ -76,42 +76,33 @@ ol {
     font-size: 14px;
 }
 
-.search_form label {
-    padding-right: 5px;
-}
-
-.search_form .end_day {
-    margin-left: 15px;
-}
-
 .search_form .condition_form {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 0 0 10px 15px;
     border-bottom: 1px solid #d1d1d1;
 }
 
 .condition_form label {
     position: relative;
-    float: left;
     padding-right: 4px;
     top: 10px;
+    padding-bottom: 20px;
 }
 
 .condition_form .newtralization_label {
-    margin-left: 15px;
+    padding-bottom: 20px;
 }
 
 .condition_form .location_label {
-    margin-left: 15px;
+    padding-bottom: 20px;
 }
 
 .condition_form .location_input {
-    width: 240px;
     height: 35px;
+    display: block;
 }
 
 .search_form .kinds_box {
-    float: left;
     position: relative;
     width: 110px;
     height: 38px;

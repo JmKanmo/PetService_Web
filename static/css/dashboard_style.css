@@ -18,7 +18,6 @@ ol {
 .search_form {
     position: relative;
     padding-bottom: 36px;
-    width: 660px;
     border: 1px solid #acacac;
     margin: 0 auto;
     background: rgba(245, 255, 149, 0.29);
@@ -45,10 +44,6 @@ ol {
     padding-right: 5px;
 }
 
-.search_form .end_day {
-    margin-left: 15px;
-}
-
 .search_form .condition_form {
     margin-top: 20px;
     padding: 0 0 10px 15px;
@@ -60,10 +55,6 @@ ol {
     float: left;
     padding-right: 4px;
     top: 10px;
-}
-
-.condition_form .sido_label {
-    margin-left: 15px;
 }
 
 .search_form .kinds_box {
@@ -104,7 +95,6 @@ ol {
     position: relative;
     top: 10px;
     font-size: 14px;
-    margin-left: 15px;
     color: #333;
 }
 
@@ -130,22 +120,18 @@ ol {
 
 .animal_list li {
     float: left;
-    margin-bottom: 30px;
-}
-
-.animal_list li {
-    margin-left: 50px;
+    margin: 0 0 30px 15px;
 }
 
 .animal_list .animal_profile {
-    display: block;
     cursor: pointer;
-    padding: 15px 0 25px 15px;
+    padding: 15px 15px 25px 15px;
     border: 1px solid #e4e4e4;
     color: #000;
     font-size: 14px;
     height: 260px;
-    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 .animal_list li .profile_img {

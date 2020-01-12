@@ -26,52 +26,64 @@
     <div class="wrap">
         <form action="/bp/dashboard" class="search_form" method="POST">
             <div class="date_form">
-                <label for="start_day" class="start_day">검색시작일</label>
-                <input type='date' id="start_day" name="start_day" placeholder=" YYYY-MM-DD" />
-                <label for="end_day" class="end_day">검색종료일</label>
-                <input type='date' id="end_day" name="end_day" placeholder=" YYYY-MM-DD" />
+                <div style="margin-bottom: 10px;">
+                    <label for="start_day" class="start_day">검색시작일</label>
+                    <input type='date' id="start_day" name="start_day" placeholder=" YYYY-MM-DD" />
+                </div>
+
+                <div>
+                    <label for="end_day" class="end_day">검색종료일</label>
+                    <input type='date' id="end_day" name="end_day" placeholder=" YYYY-MM-DD" />
+                </div>
             </div>
 
             <div class="condition_form clear_fix">
-                <label style="display: block;" for="kinds">종류</label>
-                <div class="kinds_box">
-                    <select class="kinds" name="animal_kinds" id="kinds">
-                        <option value="417000">개</option>
-                        <option value="422400">고양이</option>
-                        <option value="429900">기타</option>
-                    </select>
+                <div class="clear_fix" style="margin-bottom: 10px;">
+                    <label for="kinds">종류</label>
+                    <div class="kinds_box">
+                        <select class="kinds" name="animal_kinds" id="kinds">
+                            <option value="417000">개</option>
+                            <option value="422400">고양이</option>
+                            <option value="429900">기타</option>
+                        </select>
+                    </div>
                 </div>
 
-                <label class="sido_label" for="sido">시,도</label>
-                <div class="kinds_box">
-                    <select class="kinds" id="sido" name="sido_kinds" onChange="find_sido(this.value,sigungu_kinds)">
-                        <option>-선택-</option>
-                        <option value="6110000">서울특별시</option>
-                        <option value="6260000">부산광역시</option>
-                        <option value="6270000">대구광역시</option>
-                        <option value="6280000">인천광역시</option>
-                        <option value="6290000">광주광역시</option>
-                        <option value="6300000">대전광역시</option>
-                        <option value="6310000">울산광역시</option>
-                        <option value="6410000">경기도</option>
-                        <option value="6420000">강원도</option>
-                    </select>
+                <div class="clear_fix">
+                    <label class="sido_label" for="sido">시,도</label>
+                    <div class="kinds_box">
+                        <select class="kinds" id="sido" name="sido_kinds"
+                            onChange="find_sido(this.value,sigungu_kinds)">
+                            <option>-선택-</option>
+                            <option value="6110000">서울특별시</option>
+                            <option value="6260000">부산광역시</option>
+                            <option value="6270000">대구광역시</option>
+                            <option value="6280000">인천광역시</option>
+                            <option value="6290000">광주광역시</option>
+                            <option value="6300000">대전광역시</option>
+                            <option value="6310000">울산광역시</option>
+                            <option value="6410000">경기도</option>
+                            <option value="6420000">강원도</option>
+                        </select>
+                    </div>
+
+                    <div class="kinds_box">
+                        <select class="kinds" name="sigungu_kinds">
+                            <option>-선택-</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="kinds_box">
-                    <select class="kinds" name="sigungu_kinds">
-                        <option>-선택-</option>
-                    </select>
-                </div>
-
-                <p class="isNutralization">중성화여부(Y/N)</p>
-                <div class="custom-control custom-radio">
-                    <input type="radio" name="neutralization" id="yes" class="custom-control-input" value="Y">
-                    <label class="custom-control-label" for="yes">Y</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input type="radio" name="neutralization" id="no" class="custom-control-input" value="N">
-                    <label class="custom-control-label" for="no">N</label>
+                <div class="clear_fix">
+                    <p class="isNutralization">중성화여부(Y/N)</p>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" name="neutralization" id="yes" class="custom-control-input" value="Y">
+                        <label class="custom-control-label" for="yes">Y</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" name="neutralization" id="no" class="custom-control-input" value="N">
+                        <label class="custom-control-label" for="no">N</label>
+                    </div>
                 </div>
             </div>
             <input class="search_btn" type="submit" value="검색" title="조건에 맞는 동물을 검색합니다.">

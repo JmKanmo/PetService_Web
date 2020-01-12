@@ -84,12 +84,8 @@
     display: none;
 }
 
-.menu_list li {
+.menu_list .menu_item {
     float: left;
-}
-
-.menu_list li:nth-child(n+2) {
-    margin-left: 80px;
 }
 
 .main-panel .myfooter {
@@ -159,12 +155,61 @@ screen and (max-height:991px) and(orientation:landscape) {
         border-left: none;
         border-right: none;
     }
+
+    .menu_list .menu_item a {
+        color: black;
+    }
+
+    .menu_list .menu_item:nth-child(-n+2) {
+        padding-right: 40px;
+        border-right: 1px solid black;
+    }
+
+    .menu_list .menu_item:nth-child(n+2) {
+        margin-left: 40px;
+    }
+
+    .menu_utilize a {
+        float: left;
+    }
+
+    .up_down_Btn {
+        float: right;
+        position: relative;
+        width: 25px;
+        height: 25px;
+        top: -3px;
+        left: 5px;
+        cursor: pointer;
+    }
+
+    .up_down_Btn img {
+        width: 90%;
+        height: 90%;
+    }
+
+    .Apiuse_list {
+        display: none;
+        padding: 10px;
+        background-color: #FFEB3B;
+        border: 1px solid #FF9800;
+    }
+
+    .utilize_list a {
+        color: #673AB7;
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 404px),
 screen and (max-height: 404px) and (orientation: landscape) {
 
-    .menu_list li:nth-child(n+2) {
+    .menu_list .menu_item:nth-child(n+2) {
         margin-left: 20px;
+    }
+
+    .menu_list .menu_item:nth-child(-n+2) {
+        padding-right: 15px;
+        border-right: 1px solid black;
     }
 }
