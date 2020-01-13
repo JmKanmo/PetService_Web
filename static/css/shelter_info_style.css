@@ -6,6 +6,11 @@
     display: block;
 }
 
+.wrap {
+    padding: 0 20px;
+    text-align: center;
+}
+
 .title {
     margin: auto;
     font-size: 16px;
@@ -16,10 +21,8 @@
 }
 
 .info_wrap {
-    width: 450px;
-    height: auto;
+    display: inline-block;
     border: 1px solid black;
-    margin: 0 auto;
 }
 
 .info_wrap .info_box {

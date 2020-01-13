@@ -240,10 +240,7 @@ function add_shelter_list(shelter_list) {
 
     $(document).ready(function () {
         $('.shelter').click(function () {
-            var url = '/bp/shelter_info';
-            var name = "유기동물보호시설상세정보";
-            var option = "width = 100%, height = 100%, top = 100, left = 350, location = no";
-            window.open(url, name, option);
+            window.open('/bp/shelter_info', "유기동물보호시설상세정보", 'height=' + screen.height + ',width=' + screen.width + 'fullscreen=yes');
             shelter_info = shelter_list[$('.shelter').index(this)];
         });
     });
@@ -318,10 +315,7 @@ function add_animal_list(animal_list) {
 
     $(document).ready(function () {
         $('.animal').click(function () {
-            var url = '/bp/animal_info';
-            var name = "유기동물상세정보";
-            var option = "width = 100%, height = 100%, top = 100, left = 350, location = no";
-            window.open(url, name, option);
+            window.open('/bp/animal_info', "유기동물상세정보", 'height=' + screen.height + ',width=' + screen.width + 'fullscreen=yes');
             animal_info = animal_list[$('.animal').index(this)];
         });
     });

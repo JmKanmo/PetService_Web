@@ -393,6 +393,10 @@ screen and (max-height:720px) and(orientation:landscape) {
         font-size: 12px;
     }
 
+    .shelter_list li {
+        font-size: 15px;
+    }
+
     .map_controller_div .map_btn {
         width: 55px;
         font-size: 13px;
@@ -427,6 +431,10 @@ screen and (max-height:414px) and(orientation:landscape) {
     .shelter_box h1,
     .animal_box h1 {
         font-size: 13px;
+    }
+
+    .shelter_list li {
+        font-size: 14px;
     }
 
     .road_view {

@@ -16,14 +16,13 @@
 }
 
 .wrap {
-    padding-bottom: 30px;
+    padding: 0 20px;
+    text-align: center;
 }
 
 .info_wrap {
-    width: 450px;
-    height: auto;
+    display: inline-block;
     border: 1px solid black;
-    margin: 0 auto;
 }
 
 .info_wrap .info_box {
