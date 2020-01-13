@@ -77,6 +77,25 @@
     margin-top: 10px;
 }
 
+.home_link {
+    position: absolute;
+    left: 25px;
+    top: 7px;
+    font-size: 12px;
+    display: none;
+}
+
+.home_link::after {
+    content: "";
+    position: absolute;
+    right: 33px;
+    top: 0;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url(../images/home.png) no-repeat;
+    background-size: 10px;
+}
 
 .menu_list {
     padding: 15px;
@@ -96,12 +115,19 @@
     display: flex;
 }
 
-.float-left li {
-    float: left;
+.myfooter .float-left {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 13px;
 }
 
-.float-left li+li {
-    margin-left: 35px;
+.float-left a+a {
+    margin-left: 20px;
+}
+
+.float-right {
+    font-size: 14px;
+    width: 100%;
 }
 
 .myfooter .github_name {
@@ -145,6 +171,11 @@
 
 @media screen and (max-width:991px),
 screen and (max-height:991px) and(orientation:landscape) {
+
+    .home_link {
+        display: block;
+    }
+
     .menu_list {
         display: block;
     }
@@ -189,6 +220,7 @@ screen and (max-height:991px) and(orientation:landscape) {
         padding: 10px;
         background-color: #fff6a7;
         border: 1px solid #f5dc04;
+        min-width: 100px;
     }
 
     .utilize_list a {
@@ -219,5 +251,14 @@ screen and (max-height: 404px) and (orientation: landscape) {
 
     .active a {
         color: red;
+    }
+
+    .myfooter .github_name,
+    .myfooter .blog_name {
+        font-size: 12px;
+    }
+
+    .float-right {
+        font-size: 12px;
     }
 }

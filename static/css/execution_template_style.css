@@ -53,9 +53,10 @@ ol {
 
 .search_form {
     position: relative;
-    padding-bottom: 35px;
+    padding: 0 20px 35px 0;
     border: 1px solid #acacac;
     width: 70%;
+    max-width: 500px;
     background: rgba(245, 255, 149, 0.29);
 }
 
@@ -63,6 +64,10 @@ ol {
     margin-top: 20px;
     padding: 0 0 5px 15px;
     border-bottom: 1px solid #d1d1d1;
+}
+
+.search_form input {
+    width: 100%;
 }
 
 .search_form input[type="date"] {

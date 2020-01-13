@@ -50,6 +50,7 @@
 }
 
 .map_wrap {
+    position: relative;
     height: 500px;
     border: 1px solid slategray;
 }
@@ -321,7 +322,7 @@
 }
 
 .road_view::after {
-    content: "Press Esc btn to close";
+    content: "Press Esc btn/key to close";
     position: absolute;
     display: block;
     right: 0;
@@ -330,6 +331,21 @@
     background-color: rgba(0, 0, 0, 0.45);
     color: #fff;
     font-size: 10px;
+}
+
+.road_view_close {
+    position: absolute;
+    content: "";
+    bottom: 5px;
+    z-index: 5;
+    right: 0;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.25);
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
 }
 
 .list_box {
@@ -434,7 +450,7 @@ screen and (max-height:414px) and(orientation:landscape) {
     }
 
     .shelter_list li {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .road_view {

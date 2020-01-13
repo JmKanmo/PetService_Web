@@ -19,7 +19,7 @@ ol {
     position: relative;
     padding-bottom: 36px;
     border: 1px solid #acacac;
-    margin: 0 auto;
+    max-width: 700px;
     background: rgba(245, 255, 149, 0.29);
 }
 
@@ -116,6 +116,7 @@ ol {
 
 .animal_list {
     margin: 25px 0 0 -15px;
+    max-width: 780px;
 }
 
 .animal_list li {

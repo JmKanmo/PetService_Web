@@ -429,3 +429,7 @@ window.addEventListener('message', function (event) {
         }
     })
 })();
+
+function close_roadview() {
+    document.getElementById("roadview").style.display = "none";
+}

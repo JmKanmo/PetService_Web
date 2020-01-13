@@ -52,10 +52,7 @@ $(document).ready(function () {
 
 // 프로필 클릭시 상세정보팝업창 호출함수
 function profile_onclick() {
-    var url = '/bp/animal_info';
-    var name = "유기동물동물상세정보";
-    var option = "width = 100%, height = 100%, top = 100, left = 350, location = no";
-    window.open(url, name, option);
+    window.open('/bp/animal_info', "유기동물상세정보", 'height=' + screen.height + ',width=' + screen.width + 'fullscreen=yes');
 }
 
 // 상세정보팝업창에서 호출되는 함수(상세정보저장변수 반환)
