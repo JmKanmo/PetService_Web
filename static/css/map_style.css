@@ -311,9 +311,9 @@
 .road_view {
     display: none;
     position: absolute;
-    width: 500px;
+    width: 70%;
     height: 500px;
-    top: 100px;
+    top: 150px;
     left: 10px;
     overflow: hidden;
     background: url(http://t1.daumcdn.net/mapjsapi/images/2x/bg_tile.png);
@@ -321,26 +321,15 @@
 }
 
 .road_view::after {
-    content: "";
+    content: "Press Esc btn to close";
     position: absolute;
-    width: 60px;
-    left: 0;
-    height: 60px;
-    background: url(../images/close-icon.jpg) no-repeat;
-    background-size: 60px;
-    z-index: 5;
-    opacity: 0.5;
-}
-
-.road_view .close_btn {
-    position: absolute;
-    width: 60px;
-    left: 0;
-    height: 60px;
-    background: url(../images/close-icon.jpg);
-    opacity: 0;
-    cursor: pointer;
-    z-index: 10;
+    display: block;
+    right: 0;
+    top: 0;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-size: 10px;
 }
 
 .list_box {
@@ -384,13 +373,6 @@
     border: 1px solid #d1d1d1;
 }
 
-/* 임시div - 마커 생성,삭제 */
-
-.marker_div {
-    position: absolute;
-    top: 0;
-}
-
 .animal {
     width: 25%;
 }
@@ -423,6 +405,13 @@ screen and (max-height:720px) and(orientation:landscape) {
         height: 35px;
         font-size: 12px;
     }
+
+    .road_view {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        height: 400px;
+    }
 }
 
 @media screen and (max-width:414px),
@@ -438,5 +427,12 @@ screen and (max-height:414px) and(orientation:landscape) {
     .shelter_box h1,
     .animal_box h1 {
         font-size: 13px;
+    }
+
+    .road_view {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        height: 250px;
     }
 }

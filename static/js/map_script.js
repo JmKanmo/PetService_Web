@@ -242,7 +242,7 @@ function add_shelter_list(shelter_list) {
         $('.shelter').click(function () {
             var url = '/bp/shelter_info';
             var name = "유기동물보호시설상세정보";
-            var option = "width = 500, height = 300, top = 100, left = 350, location = no";
+            var option = "width = 100%, height = 100%, top = 100, left = 350, location = no";
             window.open(url, name, option);
             shelter_info = shelter_list[$('.shelter').index(this)];
         });
@@ -320,7 +320,7 @@ function add_animal_list(animal_list) {
         $('.animal').click(function () {
             var url = '/bp/animal_info';
             var name = "유기동물상세정보";
-            var option = "width = 500, height = 500, top = 100, left = 350, location = no";
+            var option = "width = 100%, height = 100%, top = 100, left = 350, location = no";
             window.open(url, name, option);
             animal_info = animal_list[$('.animal').index(this)];
         });
@@ -422,3 +422,16 @@ window.addEventListener('message', function (event) {
         panTo(event.data['pos']['idx_1'], event.data['pos']['idx_2']);
     }
 });
+
+
+(function () {
+    document.addEventListener('keydown', function (e) {
+        const keyCode = e.keyCode;
+        const keywich = e.which;
+        // console.log('pushed key ' + keyCode);
+
+        if (keyCode == 27) { // Enter key
+            document.getElementById("roadview").style.display = "None";
+        }
+    })
+})();

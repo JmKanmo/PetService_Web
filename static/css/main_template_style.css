@@ -156,10 +156,6 @@ screen and (max-height:991px) and(orientation:landscape) {
         border-right: none;
     }
 
-    .menu_list .menu_item a {
-        color: black;
-    }
-
     .menu_list .menu_item:nth-child(-n+2) {
         padding-right: 40px;
         border-right: 1px solid black;
@@ -191,13 +187,21 @@ screen and (max-height:991px) and(orientation:landscape) {
     .Apiuse_list {
         display: none;
         padding: 10px;
-        background-color: #FFEB3B;
-        border: 1px solid #FF9800;
+        background-color: #fff6a7;
+        border: 1px solid #f5dc04;
     }
 
     .utilize_list a {
         color: #673AB7;
         font-size: 16px;
+    }
+
+    .active a {
+        color: red;
+    }
+
+    .container-fluid nav {
+        padding-bottom: 30px;
     }
 }
 
@@ -211,5 +215,9 @@ screen and (max-height: 404px) and (orientation: landscape) {
     .menu_list .menu_item:nth-child(-n+2) {
         padding-right: 15px;
         border-right: 1px solid black;
+    }
+
+    .active a {
+        color: red;
     }
 }

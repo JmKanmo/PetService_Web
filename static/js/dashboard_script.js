@@ -54,7 +54,7 @@ $(document).ready(function () {
 function profile_onclick() {
     var url = '/bp/animal_info';
     var name = "유기동물동물상세정보";
-    var option = "width = 500, height = 500, top = 100, left = 350, location = no";
+    var option = "width = 100%, height = 100%, top = 100, left = 350, location = no";
     window.open(url, name, option);
 }
 
