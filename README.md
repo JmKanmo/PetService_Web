@@ -69,14 +69,17 @@ python app.py
 -----------------------
 <br>
 
+Mobile 환경
 <img src="static/images/mobile-ver.PNG" width="50%" height="50%" title="mobile환경 이미지" alt="Mobile 환경"></img>
 
 <br>
 
+Tablet 환경
 <img src="static/images/tablet-ver.PNG" width="50%" height="50%" title="tablet환경 이미지" alt="Tablet 환경"></img>
 
 <br>
 
+PC 환경
 <img src="static/images/pc-ver.PNG" width="50%" height="50%" title="pc환경 이미지" alt="PC 환경"></img>
 
 <br>
