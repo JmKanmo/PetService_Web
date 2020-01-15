@@ -68,19 +68,16 @@ python app.py
 실행화면
 -----------------------
 <br>
-Mobile 환경
 
-<img src="./static/images/mobile-ver.png" width="100%" height="100%" title="mobile환경 이미지" alt="mobile-ver"></img>
-
-<br>
-
-Tablet 환경
-<img src="./static/images/tablet-ver.png" width="100%" height="100%" title="tablet환경 이미지" alt="tablet-ver"></img>
+<img src="static/images/mobile-ver.PNG" width="50%" height="50%" title="mobile환경 이미지" alt="Mobile 환경"></img>
 
 <br>
 
-PC 환경
-<img src="./static/images/pc-ver.png" width="100%" height="100%" title="pc환경 이미지" alt="pc-ver"></img>
+<img src="static/images/tablet-ver.PNG" width="50%" height="50%" title="tablet환경 이미지" alt="Tablet 환경"></img>
+
+<br>
+
+<img src="static/images/pc-ver.PNG" width="50%" height="50%" title="pc환경 이미지" alt="PC 환경"></img>
 
 <br>
 
@@ -103,6 +100,7 @@ Author
 * [JmKanmo](https://github.com/JmKanmo)
 
 <br>
+
 License
 ------------
 
