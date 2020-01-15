@@ -74,8 +74,12 @@ Mobile 환경
 
 <br>
 
+<br>
+
 Tablet 환경
 <img src="static/images/tablet-ver.PNG" width="50%" height="50%" title="tablet환경 이미지" alt="Tablet 환경"></img>
+
+<br>
 
 <br>
 
@@ -107,4 +111,4 @@ Author
 License
 ------------
 
-* This project is licensed under the MIT License - see the LICENSE.md file for details
+* This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
