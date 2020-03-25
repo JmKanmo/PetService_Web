@@ -361,26 +361,87 @@
     padding: 0;
 }
 
-.list_box ul {
-    min-height: 100px;
-}
-
 .list_box .shelter_box {
     float: left;
     width: 50%;
-    max-height: 400px;
-    overflow-y: scroll;
-    overflow-x: scroll;
 }
 
 .list_box .shelter_list {
+    min-height: 50px;
     text-align: left;
     border: 1px solid #d1d1d1;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    max-height: 360px;
 }
 
 .list_box .animal_box {
+    position: relative;
     float: left;
     width: 50%;
+}
+
+.list_box .animal_box .animalType {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+.animalType img {
+    widows: 100%;
+    height: 100%;
+}
+
+.animal_box .animalType img {
+    animation: rotate_image 5s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+.animal_box .animalType_list {
+    display: none;
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    top: 20px;
+    right: -10px;
+    border: 1px solid #d1d1d1;
+    padding: 5px;
+    background-color: #F0FFFF;
+}
+
+.animal_box .animalType_list li{
+    cursor: pointer;
+}
+
+.animal_box .animalType_list li:nth-child(n+2) {
+    margin-top: 10px;
+}
+
+.animal_box .animalType_list li:hover {
+    color: yellowgreen;
+}
+
+.activeAnimalType{
+    color:orange;
+}
+
+@keyframes rotate_image {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.list_box .animal_box .animalType::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .list_box .animal_list {

@@ -22,6 +22,16 @@ def search():
 
         return jsonify(shelter_info=shelter_info, animal_info=animal_info), 200
 
+#현재지도내 근처 특정타입의 동물정보 얻기
+@application.route('/animalType', methods=['POST', 'GET'])
+def animalType():
+    if request.method == 'POST':
+        # 동물정보리스트 얻기
+        animal_info = Animal_Resource().get_NearAnimal(
+            request.get_json()['address'], str(request.get_json()['type']))
+
+        return jsonify(animal_info=animal_info), 200
+
 
 # 입력받은 주소의 좌표값얻기
 @application.route('/location', methods=['POST', 'GET'])

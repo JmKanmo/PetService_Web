@@ -58,6 +58,25 @@ function communicate_info() {
     });
 }
 
+// 현재위치정보를 지정된경로로 전송하는 함수(근처 유기동물,보호시설정보출력을 위함)  
+function setAnimalInfo(animalType) {
+    $.ajax({
+        url: '/animalType',
+        contentType: 'application/json',
+        method: 'POST',
+        data: JSON.stringify({
+            address: cur_position,
+            type: animalType
+        }),
+        error: function (res) {
+            alert('탐색실패');
+        }
+    }).done(function (res) {
+        animal_list = res['animal_info'];
+        add_animal_list(animal_list);
+    });
+}
+
 // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
 searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
@@ -171,6 +190,7 @@ function displayCenterInfo(result, status) {
             map_flag = true;
         }
         communicate_info();
+        setActiveFirstList();
     }
 }
 
@@ -433,3 +453,47 @@ window.addEventListener('message', function (event) {
 function close_roadview() {
     document.getElementById("roadview").style.display = "none";
 }
+
+function getAnimalCode(type) {
+    switch (type) {
+        case '개': return 417000;
+        case '고양이': return 422400;
+        default: return 429900;
+    }
+}
+
+function setActiveFirstList() {
+    let target = document.querySelector(".animalType_list").querySelector(`li:nth-child(1)`);
+
+    if (!target.classList.contains('activeAnimalType')) {
+        let prevActive = document.querySelector(".activeAnimalType");
+        if (prevActive) {
+            prevActive.classList.remove("activeAnimalType");
+        }
+        target.classList.add("activeAnimalType");
+    }
+}
+
+document.querySelector(".animalType").addEventListener("click", function () {
+    let animalTypeList = document.querySelector(".animalType_list");
+
+    if (!animalTypeList.style.display || animalTypeList.style.display === "none") {
+        animalTypeList.style.display = "block";
+    } else {
+        animalTypeList.style.display = "none";
+    }
+});
+
+document.querySelector(".animalType_list").addEventListener("click", function (evt) {
+    let prevActive = document.querySelector(".activeAnimalType");
+
+    if (prevActive) {
+        if (evt.target != prevActive) {
+            prevActive.classList.remove("activeAnimalType");
+        } else {
+            return;
+        }
+    }
+    $(evt.target).addClass("activeAnimalType");
+    setAnimalInfo(getAnimalCode(evt.target.innerText));
+});

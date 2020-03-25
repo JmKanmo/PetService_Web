@@ -96,7 +96,7 @@ class Animal_Resource:
             return []
 
     # 인자로 전달된 주소의 위치의 근처에분포한 유기동물데이터를 json리스트형태로 변환,반환하는 함수
-    def get_NearAnimal(self, address):
+    def get_NearAnimal(self, address, animalType=''):
         parsed_address = address.split(' ')  # 파싱주소([0]-시도, [1]-시군구)
         animal_info = []
         animal_sigunguinfo = []
@@ -107,7 +107,7 @@ class Animal_Resource:
                     for sigungu in Location_Resource().get_sigungulist(json_data['orgCd']):
                         if sigungu['orgdownNm'] == parsed_address[1]:
                             for animal in self.get_searchAnimal(
-                                    '20190101', '20191204', '', json_data['orgCd'], sigungu['orgCd'], ''):
+                                    '20190101', '20200325', animalType, json_data['orgCd'], sigungu['orgCd'], ''):
                                 if animal['processState'] == '보호중' or animal['processState'] == '공고중':
                                     animal_sigunguinfo.append(animal)
                             break
