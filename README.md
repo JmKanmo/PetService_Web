@@ -6,7 +6,7 @@
 공공데이터포탈 동물보호관리시스템 Open API를 이용해 전국의 유기동물, 보호시설 대행업체정보를
 웹사이트에서 원하는 조건에따라 검색 및 확인하는 서비스제공
 
-If you wanna view website, click [Here](http://nebiros.pythonanywhere.com/)
+If you wanna view website, click [Here](http://undefined)
 
 <br>
 
